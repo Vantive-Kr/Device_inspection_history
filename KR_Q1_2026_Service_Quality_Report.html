@@ -139,6 +139,7 @@
   <div class="nav-tab" onclick="switchTab(1)">–</div>
   <div class="nav-tab" onclick="switchTab(2)">–</div>
   <div class="nav-tab" onclick="switchTab(3)">–</div>
+  <div class="nav-tab" onclick="switchTab(4)">–</div>
 </div>
 
 <!-- ===================== KO SECTIONS ===================== -->
@@ -643,11 +644,179 @@
   </div>
 </div>
 
+<!-- ===================== KO: PHOENIX ===================== -->
+<div class="content section" id="tab-ko-4">
+  <div class="section-title"><span class="arrows">&gt;&gt;&gt;</span> Phoenix 30DRR 분석</div>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">총 대상 계정</div><div class="kpi-value">82</div><div class="kpi-sub">Phoenix-Innova Machines</div></div>
+    <div class="kpi-card pine"><div class="kpi-label">On Target</div><div class="kpi-value" style="color:var(--pine)">61</div><div class="kpi-sub">74.4% — 목표 달성</div></div>
+    <div class="kpi-card red"><div class="kpi-label">Out of Target</div><div class="kpi-value" style="color:#c0392b">21</div><div class="kpi-sub">25.6% — Caution 초과</div></div>
+    <div class="kpi-card"><div class="kpi-label">Target 기준</div><div class="kpi-value" style="font-size:22px">20%</div><div class="kpi-sub">Caution: 25%</div></div>
+    <div class="kpi-card eucalyptus"><div class="kpi-label">1_Seoul</div><div class="kpi-value" style="color:var(--eucalyptus)">25%</div><div class="kpi-sub">Out of Target 16/64건</div></div>
+    <div class="kpi-card red"><div class="kpi-label">2_DJGJ</div><div class="kpi-value" style="color:#c0392b">27.8%</div><div class="kpi-sub">Out of Target 5/18건</div></div>
+  </div>
+
+  <div class="alert alert-orange">
+    <strong>⚠ 전체 재방문률 25.6%로 Caution 기준(25%)을 초과</strong>했습니다. 두 팀 모두 Target(20%)을 달성하지 못하고 있으며, 특히 Minseob Shim 담당 계정에서 집중적인 이슈가 발생하고 있습니다.
+  </div>
+
+  <div class="grid-2">
+    <!-- 팀별 KPI 차트 -->
+    <div class="card">
+      <div class="card-title">팀별 재방문률 vs 기준</div>
+      <div class="chart-wrap"><canvas id="ko-phxTeam"></canvas></div>
+    </div>
+    <!-- On/Off Target 도넛 -->
+    <div class="card">
+      <div class="card-title">KPI 달성 현황</div>
+      <div class="chart-wrap"><canvas id="ko-phxDonut"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Owner별 분석 -->
+  <div class="card">
+    <div class="card-title">1_Seoul — Owner별 Out of Target 현황</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Owner</th><th>총 담당</th><th>On Target</th><th>Out of Target</th><th>비율</th><th>위험도</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Minseob Shim</strong></td><td>23</td><td>13</td><td><strong style="color:#c0392b">10</strong></td><td>43%</td><td><span class="pill pill-red">높음</span></td></tr>
+          <tr><td>Sehun Kim</td><td>3</td><td>1</td><td>2</td><td>67%</td><td><span class="pill pill-red">높음 (소량)</span></td></tr>
+          <tr><td>Seungjae Yeo</td><td>3</td><td>2</td><td>1</td><td>33%</td><td><span class="pill pill-orange">주의</span></td></tr>
+          <tr><td>Donghyuk Kim</td><td>12</td><td>10</td><td>2</td><td>17%</td><td><span class="pill pill-pine">양호</span></td></tr>
+          <tr><td>Heerock Jung</td><td>9</td><td>8</td><td>1</td><td>11%</td><td><span class="pill pill-pine">양호</span></td></tr>
+          <tr><td>Jaeyong Lee</td><td>4</td><td>4</td><td>0</td><td>0%</td><td><span class="pill pill-pine">달성</span></td></tr>
+          <tr><td>Youngkyun Kim</td><td>4</td><td>4</td><td>0</td><td>0%</td><td><span class="pill pill-pine">달성</span></td></tr>
+          <tr><td>Youngju Seong</td><td>3</td><td>3</td><td>0</td><td>0%</td><td><span class="pill pill-pine">달성</span></td></tr>
+          <tr><td>기타 (3명)</td><td>3</td><td>3</td><td>0</td><td>0%</td><td><span class="pill pill-pine">달성</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Out of Target 계정 상세 -->
+  <div class="card">
+    <div class="card-title">Out of Target 계정 상세 (21건)</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>팀</th><th>Account</th><th>Owner</th><th>반복 건수</th><th>Asset S/N</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill pill-pine">1_Seoul</span></td><td>(의료)칠석의료재단(안산사랑의병원)-GHD</td><td>Minseob Shim</td><td><strong style="color:#c0392b">4</strong></td><td>—</td></tr>
+          <tr><td><span class="pill pill-pine">1_Seoul</span></td><td>한림대학교 성심병원(평촌성심병원)-GHD</td><td>Minseob Shim</td><td><strong style="color:#c0392b">3</strong></td><td>—</td></tr>
+          <tr><td><span class="pill pill-orange">2_DJGJ</span></td><td>충청북도 충주의료원-GHD</td><td>Wonjin Song</td><td><strong style="color:#c0392b">3</strong></td><td>—</td></tr>
+          <tr><td><span class="pill pill-pine">1_Seoul</span></td><td>서안산노인전문병원-GHD</td><td>Minseob Shim / Donghyuk Kim</td><td>2+1</td><td>—</td></tr>
+          <tr><td><span class="pill pill-pine">1_Seoul</span></td><td>인천하이병원-GHD</td><td>Donghyuk Kim / Seungjae Yeo</td><td>각 1</td><td>—</td></tr>
+          <tr><td><span class="pill pill-pine">1_Seoul</span></td><td>서울아산병원-GHD</td><td>Sehun Kim</td><td>1</td><td>—</td></tr>
+          <tr><td><span class="pill pill-pine">1_Seoul</span></td><td>의료법인이젠의료재단(러스크병원)-GHD</td><td>Sehun Kim</td><td>1</td><td>—</td></tr>
+          <tr><td><span class="pill pill-pine">1_Seoul</span></td><td>(의)대인의료재단(다니엘병원)-GHD</td><td>Minseob Shim</td><td>1</td><td>—</td></tr>
+          <tr><td><span class="pill pill-pine">1_Seoul</span></td><td>서울탑내과의원-GHD</td><td>Heerock Jung</td><td>1</td><td>—</td></tr>
+          <tr><td><span class="pill pill-orange">2_DJGJ</span></td><td>늘편한내과-GHD</td><td><span style="color:#c0392b;font-weight:700">미지정</span></td><td>1</td><td>—</td></tr>
+          <tr><td><span class="pill pill-orange">2_DJGJ</span></td><td>전북대학교병원-GHD</td><td><span style="color:#c0392b;font-weight:700">미지정</span></td><td>1</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 시사점 -->
+  <div class="alert alert-plum">
+    <div style="font-size:10px;font-weight:700;color:var(--plum);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">핵심 시사점 및 권고 조치</div>
+    <div style="font-size:11px;line-height:1.9">
+      <span class="arrows" style="font-size:10px">&gt;</span> <strong>Minseob Shim</strong> 담당 23건 중 10건(43%) Out of Target — 집중 원인 분석 및 서비스 개선 필요<br>
+      <span class="arrows" style="font-size:10px">&gt;</span> <strong>칠석의료재단·한림대 성심병원</strong> 반복 재방문 (각 4·3건) — 근본 원인 해결 조치 시급<br>
+      <span class="arrows" style="font-size:10px">&gt;</span> <strong>2_DJGJ 미지정 계정 2건</strong> (늘편한내과, 전북대병원) — Owner 즉시 배정 필요<br>
+      <span class="arrows" style="font-size:10px">&gt;</span> <strong>충주의료원 3건 반복</strong> — Wonjin Song 담당 집중 모니터링
+    </div>
+  </div>
+</div>
+
+<!-- ===================== EN: PHOENIX ===================== -->
+<div class="content section" id="tab-en-4">
+  <div class="section-title"><span class="arrows">&gt;&gt;&gt;</span> Phoenix 30DRR Analysis</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">Total Accounts</div><div class="kpi-value">82</div><div class="kpi-sub">Phoenix-Innova Machines</div></div>
+    <div class="kpi-card pine"><div class="kpi-label">On Target</div><div class="kpi-value" style="color:var(--pine)">61</div><div class="kpi-sub">74.4% — Target Achieved</div></div>
+    <div class="kpi-card red"><div class="kpi-label">Out of Target</div><div class="kpi-value" style="color:#c0392b">21</div><div class="kpi-sub">25.6% — Above Caution</div></div>
+    <div class="kpi-card"><div class="kpi-label">Target Threshold</div><div class="kpi-value" style="font-size:22px">20%</div><div class="kpi-sub">Caution: 25%</div></div>
+    <div class="kpi-card eucalyptus"><div class="kpi-label">1_Seoul</div><div class="kpi-value" style="color:var(--eucalyptus)">25%</div><div class="kpi-sub">Out of Target 16/64</div></div>
+    <div class="kpi-card red"><div class="kpi-label">2_DJGJ</div><div class="kpi-value" style="color:#c0392b">27.8%</div><div class="kpi-sub">Out of Target 5/18</div></div>
+  </div>
+
+  <div class="alert alert-orange">
+    <strong>⚠ Overall revisit rate of 25.6% exceeds the Caution threshold (25%).</strong> Both teams are above Target (20%), with concentrated issues in accounts managed by Minseob Shim.
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Team Revisit Rate vs. Thresholds</div>
+      <div class="chart-wrap"><canvas id="en-phxTeam"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">KPI Achievement</div>
+      <div class="chart-wrap"><canvas id="en-phxDonut"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">1_Seoul — Out of Target by Owner</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Owner</th><th>Total</th><th>On Target</th><th>Out of Target</th><th>Rate</th><th>Risk</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Minseob Shim</strong></td><td>23</td><td>13</td><td><strong style="color:#c0392b">10</strong></td><td>43%</td><td><span class="pill pill-red">High</span></td></tr>
+          <tr><td>Sehun Kim</td><td>3</td><td>1</td><td>2</td><td>67%</td><td><span class="pill pill-red">High (small vol.)</span></td></tr>
+          <tr><td>Seungjae Yeo</td><td>3</td><td>2</td><td>1</td><td>33%</td><td><span class="pill pill-orange">Caution</span></td></tr>
+          <tr><td>Donghyuk Kim</td><td>12</td><td>10</td><td>2</td><td>17%</td><td><span class="pill pill-pine">Good</span></td></tr>
+          <tr><td>Heerock Jung</td><td>9</td><td>8</td><td>1</td><td>11%</td><td><span class="pill pill-pine">Good</span></td></tr>
+          <tr><td>Jaeyong Lee</td><td>4</td><td>4</td><td>0</td><td>0%</td><td><span class="pill pill-pine">On Target</span></td></tr>
+          <tr><td>Youngkyun Kim</td><td>4</td><td>4</td><td>0</td><td>0%</td><td><span class="pill pill-pine">On Target</span></td></tr>
+          <tr><td>Youngju Seong</td><td>3</td><td>3</td><td>0</td><td>0%</td><td><span class="pill pill-pine">On Target</span></td></tr>
+          <tr><td>Others (3)</td><td>3</td><td>3</td><td>0</td><td>0%</td><td><span class="pill pill-pine">On Target</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Out of Target Accounts Detail (21 cases)</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Team</th><th>Account</th><th>Owner</th><th>Repeat Cases</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill pill-pine">1_Seoul</span></td><td>Chilseok Medical Foundation (Ansan Love Hospital)-GHD</td><td>Minseob Shim</td><td><strong style="color:#c0392b">4</strong></td></tr>
+          <tr><td><span class="pill pill-pine">1_Seoul</span></td><td>Hallym Univ. Sacred Heart Hospital (Pyeongchon)-GHD</td><td>Minseob Shim</td><td><strong style="color:#c0392b">3</strong></td></tr>
+          <tr><td><span class="pill pill-orange">2_DJGJ</span></td><td>Chungbuk Chungju Medical Center-GHD</td><td>Wonjin Song</td><td><strong style="color:#c0392b">3</strong></td></tr>
+          <tr><td><span class="pill pill-pine">1_Seoul</span></td><td>Seo-Ansan Senior Nursing Hospital-GHD</td><td>Minseob Shim / Donghyuk Kim</td><td>2+1</td></tr>
+          <tr><td><span class="pill pill-pine">1_Seoul</span></td><td>Incheon Hi Hospital-GHD</td><td>Donghyuk Kim / Seungjae Yeo</td><td>1 each</td></tr>
+          <tr><td><span class="pill pill-pine">1_Seoul</span></td><td>Seoul Asan Hospital-GHD</td><td>Sehun Kim</td><td>1</td></tr>
+          <tr><td><span class="pill pill-pine">1_Seoul</span></td><td>Rusk Hospital-GHD</td><td>Sehun Kim</td><td>1</td></tr>
+          <tr><td><span class="pill pill-pine">1_Seoul</span></td><td>Daniel Hospital-GHD</td><td>Minseob Shim</td><td>1</td></tr>
+          <tr><td><span class="pill pill-pine">1_Seoul</span></td><td>Seoul Top Internal Medicine-GHD</td><td>Heerock Jung</td><td>1</td></tr>
+          <tr><td><span class="pill pill-orange">2_DJGJ</span></td><td>Neulpyeonhan Internal Medicine-GHD</td><td><span style="color:#c0392b;font-weight:700">Unassigned</span></td><td>1</td></tr>
+          <tr><td><span class="pill pill-orange">2_DJGJ</span></td><td>Jeonbuk National University Hospital-GHD</td><td><span style="color:#c0392b;font-weight:700">Unassigned</span></td><td>1</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="alert alert-plum">
+    <div style="font-size:10px;font-weight:700;color:var(--plum);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">Key Insights & Recommended Actions</div>
+    <div style="font-size:11px;line-height:1.9">
+      <span class="arrows" style="font-size:10px">&gt;</span> <strong>Minseob Shim</strong>: 10/23 accounts (43%) Out of Target — root cause analysis & service improvement required<br>
+      <span class="arrows" style="font-size:10px">&gt;</span> <strong>Chilseok Foundation & Hallym Sacred Heart</strong> (4+3 repeat cases) — urgent corrective action needed<br>
+      <span class="arrows" style="font-size:10px">&gt;</span> <strong>2 unassigned accounts in 2_DJGJ</strong> (Neulpyeonhan, Jeonbuk Natl.) — owner assignment required immediately<br>
+      <span class="arrows" style="font-size:10px">&gt;</span> <strong>Chungju Medical Center (3 repeats)</strong> — Wonjin Song focused monitoring needed
+    </div>
+  </div>
+</div>
+
 <script>
 // ── Config ─────────────────────────────────────────────────────
 const TABS = {
-  ko: { ids: ['ko-0','ko-1','ko-2','ko-3'], labels: ['Complaints 분석','30DRR 분석','팀별 상세','보고 형식 제안'] },
-  en: { ids: ['en-0','en-1','en-2','en-3'], labels: ['Complaints','30DRR','Team Detail','Report Format'] }
+  ko: { ids: ['ko-0','ko-1','ko-2','ko-3','ko-4'], labels: ['Complaints 분석','30DRR 분석','팀별 상세','보고 형식 제안','Phoenix 분석'] },
+  en: { ids: ['en-0','en-1','en-2','en-3','en-4'], labels: ['Complaints','30DRR','Team Detail','Report Format','Phoenix'] }
 };
 let currentLang = 'ko';
 let currentIdx  = 0;
@@ -734,6 +903,31 @@ const barColors = [PLUM,PLUM,PLUM,PINE,PINE,EUCA,EUCA,'#9db8ae','#9db8ae','#7a9e
     container.appendChild(row);
   });
 });
+
+// ── Phoenix Charts ─────────────────────────────────────────────
+function barChartWithLine(id, labels, data, colors, lineVal, lineLabel) {
+  const ctx = document.getElementById(id); if (!ctx) return;
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { type:'bar', data, backgroundColor: colors, borderRadius: 3, borderSkipped: false, label: '재방문률(%)' },
+        { type:'line', data: labels.map(()=>lineVal), borderColor:'#c0392b', borderWidth:2, borderDash:[6,3], pointRadius:0, fill:false, label:lineLabel },
+        { type:'line', data: labels.map(()=>20), borderColor:'#105742', borderWidth:2, borderDash:[4,4], pointRadius:0, fill:false, label:'Target (20%)' }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend:{ display:true, position:'bottom', labels:{ font:{size:9}, padding:8 } } },
+      scales: { y: { beginAtZero:true, max:35, grid:{ color:'#CDDFD7' }, ticks:{ callback: v=>v+'%' } }, x:{ grid:{ display:false } } }
+    }
+  });
+}
+barChartWithLine('ko-phxTeam', ['1_Seoul','2_DJGJ'], [25, 27.8], ['#6CA07A','#72256B'], 25, 'Caution (25%)');
+barChartWithLine('en-phxTeam', ['1_Seoul','2_DJGJ'], [25, 27.8], ['#6CA07A','#72256B'], 25, 'Caution (25%)');
+donutChart('ko-phxDonut', ['On Target','Out of Target'], [61,21], [PINE,RED]);
+donutChart('en-phxDonut', ['On Target','Out of Target'], [61,21], [PINE,RED]);
 
 // ── Init ───────────────────────────────────────────────────────
 renderNav();
