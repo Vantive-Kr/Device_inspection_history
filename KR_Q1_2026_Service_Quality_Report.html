@@ -140,6 +140,7 @@
   <div class="nav-tab" onclick="switchTab(2)">–</div>
   <div class="nav-tab" onclick="switchTab(3)">–</div>
   <div class="nav-tab" onclick="switchTab(4)">–</div>
+  <div class="nav-tab" onclick="switchTab(5)">–</div>
 </div>
 
 <!-- ===================== KO SECTIONS ===================== -->
@@ -812,11 +813,162 @@
   </div>
 </div>
 
+<!-- ===================== KO: 30D BY PRODUCT ===================== -->
+<div class="content section" id="tab-ko-5">
+  <div class="section-title"><span class="arrows">&gt;&gt;&gt;</span> 30 Day By Product — Phoenix-Innova 상세 분석</div>
+
+  <div class="alert alert-orange">
+    <strong>데이터 기준</strong> — 2026년 Q1(1월~3월) Phoenix-Innova Machines 전체 WO/SR 82건 원본 데이터<br>
+    <span class="hl-red">30DRR Out of Target 21건(25.6%)</span> — Caution 기준(25%) 초과 · Target(20%) 대비 +5.6%p
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">전체 WO/SR</div><div class="kpi-value">82</div><div class="kpi-sub">Phoenix Q1 2026</div></div>
+    <div class="kpi-card red"><div class="kpi-label">Out of Target (Y)</div><div class="kpi-value">21</div><div class="kpi-sub">25.6% 재발률</div></div>
+    <div class="kpi-card pine"><div class="kpi-label">On Target (N)</div><div class="kpi-value" style="color:var(--pine)">61</div><div class="kpi-sub">74.4% 정상</div></div>
+    <div class="kpi-card eucalyptus"><div class="kpi-label">평균 수리시간</div><div class="kpi-value" style="color:var(--eucalyptus);font-size:22px">142분</div><div class="kpi-sub">Min 2 · Max 652</div></div>
+    <div class="kpi-card sage"><div class="kpi-label">주 고장원인</div><div class="kpi-value" style="font-size:14px;color:#105742;margin-top:8px">PART<br>FAILURE</div><div class="kpi-sub">75건 (91.5%)</div></div>
+    <div class="kpi-card"><div class="kpi-label">교체 1위 부품</div><div class="kpi-value" style="font-size:11px;color:var(--plum);margin-top:6px">PUMP<br>CONC/STER</div><div class="kpi-sub">14건 교체</div></div>
+  </div>
+
+  <!-- Monthly & Cause Code -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>월별 WO/SR 건수 및 30DRR 재발</div>
+      <div class="chart-wrap"><canvas id="ko-p5-monthly"></canvas></div>
+      <div class="note">1월 38건(재발 11건) → 2월 27건(6건) → 3월 17건(4건) — 분기 초 집중 후 감소 추세</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/></svg>고장 원인 코드(CC) 분포</div>
+      <div class="chart-wrap"><canvas id="ko-p5-cc"></canvas></div>
+      <div class="note">PART FAILURE 91.5%(75건) 압도적 1위 — 부품 내구성 및 교체 주기 관리 핵심</div>
+    </div>
+  </div>
+
+  <!-- ADPC & SP -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s-8-5-8-12a8 8 0 0116 0c0 7-8 12-8 12z"/><circle cx="12" cy="10" r="2"/></svg>주요 알람 유형 (ADPC) Top 10</div>
+      <div id="ko-p5-adpc"></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3-3a1 1 0 000-1.4l-1.6-1.6a1 1 0 00-1.4 0l-3 3z"/><path d="M20 14l-9 9-5-5 9-9"/></svg>교체 부품 (SP Replaced) Top 10</div>
+      <div id="ko-p5-sp"></div>
+    </div>
+  </div>
+
+  <!-- Account 30DRR 현황 -->
+  <div class="card">
+    <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-6 9 6v11H4z"/></svg>30DRR 재발(Y) 거래처 Top 현황</div>
+    <div class="chart-wrap"><canvas id="ko-p5-acct"></canvas></div>
+  </div>
+
+  <!-- Full Data Table -->
+  <div class="card">
+    <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>원본 데이터 전체 (82건)
+      <span style="margin-left:auto;display:flex;gap:6px;align-items:center">
+        <input id="ko-p5-search" type="text" placeholder="검색..." style="border:1px solid var(--border);padding:3px 8px;font-size:10px;border-radius:2px;width:140px;color:var(--text-dark)" oninput="filterTable5('ko')">
+        <span id="ko-p5-count" style="font-size:10px;color:var(--text-light)">82건</span>
+      </span>
+    </div>
+    <div class="table-wrap">
+      <table id="ko-p5-table">
+        <thead><tr><th>#</th><th>거래처</th><th>Asset S/N</th><th>생성일</th><th>종료일</th><th>수리(분)</th><th>30DRR</th><th>CC</th><th>ADPC (알람)</th><th>교체 부품</th><th>Owner</th></tr></thead>
+        <tbody id="ko-p5-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="alert alert-plum" style="margin-top:12px">
+    <div style="font-size:10px;font-weight:700;color:var(--plum);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">핵심 시사점</div>
+    <div style="font-size:11px;line-height:1.9">
+      <span class="arrows" style="font-size:10px">&gt;</span> <strong>EXTERNAL LEAK (FLUID) 18건</strong> — 최다 알람 유형, 호스 및 커넥터 노후화 집중 점검 필요<br>
+      <span class="arrows" style="font-size:10px">&gt;</span> <strong>PUMP CONC/STER 부품 교체 14건</strong> — 교체 주기 단축 및 예방 교체 기준 검토<br>
+      <span class="arrows" style="font-size:10px">&gt;</span> <strong>칠석의료재단(4건)·서안산노인전문(3건)·충주의료원(3건)</strong> — 동일 Asset 집중 관리 필요<br>
+      <span class="arrows" style="font-size:10px">&gt;</span> <strong>수리 시간 최대 652분</strong> — 일부 장기 수리 케이스 원인 분석 및 부품 현장 재고 확보 권고
+    </div>
+  </div>
+</div>
+
+<!-- ===================== EN: 30D BY PRODUCT ===================== -->
+<div class="content section" id="tab-en-5">
+  <div class="section-title"><span class="arrows">&gt;&gt;&gt;</span> 30 Day By Product — Phoenix-Innova Detail Analysis</div>
+
+  <div class="alert alert-orange">
+    <strong>Data Scope</strong> — Q1 2026 (Jan–Mar) Phoenix-Innova Machines · All WO/SR: 82 records<br>
+    <span class="hl-red">30DRR Out of Target: 21 cases (25.6%)</span> — Exceeds Caution threshold (25%) · +5.6%p above Target (20%)
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">Total WO/SR</div><div class="kpi-value">82</div><div class="kpi-sub">Phoenix Q1 2026</div></div>
+    <div class="kpi-card red"><div class="kpi-label">Out of Target (Y)</div><div class="kpi-value">21</div><div class="kpi-sub">25.6% Recurrence</div></div>
+    <div class="kpi-card pine"><div class="kpi-label">On Target (N)</div><div class="kpi-value" style="color:var(--pine)">61</div><div class="kpi-sub">74.4% Achieved</div></div>
+    <div class="kpi-card eucalyptus"><div class="kpi-label">Avg Repair Time</div><div class="kpi-value" style="color:var(--eucalyptus);font-size:22px">142 min</div><div class="kpi-sub">Min 2 · Max 652</div></div>
+    <div class="kpi-card sage"><div class="kpi-label">Top Cause Code</div><div class="kpi-value" style="font-size:14px;color:#105742;margin-top:8px">PART<br>FAILURE</div><div class="kpi-sub">75 cases (91.5%)</div></div>
+    <div class="kpi-card"><div class="kpi-label">Top Replaced Part</div><div class="kpi-value" style="font-size:11px;color:var(--plum);margin-top:6px">PUMP<br>CONC/STER</div><div class="kpi-sub">14 replacements</div></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>Monthly WO/SR Count & 30DRR Recurrence</div>
+      <div class="chart-wrap"><canvas id="en-p5-monthly"></canvas></div>
+      <div class="note">Jan 38 (Y:11) → Feb 27 (Y:6) → Mar 17 (Y:4) — Declining trend after Q1 peak</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/></svg>Cause Code (CC) Distribution</div>
+      <div class="chart-wrap"><canvas id="en-p5-cc"></canvas></div>
+      <div class="note">PART FAILURE 91.5% (75 cases) — Part durability & replacement cycle management is key</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s-8-5-8-12a8 8 0 0116 0c0 7-8 12-8 12z"/><circle cx="12" cy="10" r="2"/></svg>Top 10 Alarm Types (ADPC)</div>
+      <div id="en-p5-adpc"></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3-3a1 1 0 000-1.4l-1.6-1.6a1 1 0 00-1.4 0l-3 3z"/><path d="M20 14l-9 9-5-5 9-9"/></svg>Top 10 SP Replaced Parts</div>
+      <div id="en-p5-sp"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-6 9 6v11H4z"/></svg>Top Accounts by 30DRR Recurrence (Y)</div>
+    <div class="chart-wrap"><canvas id="en-p5-acct"></canvas></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>Full Raw Data (82 records)
+      <span style="margin-left:auto;display:flex;gap:6px;align-items:center">
+        <input id="en-p5-search" type="text" placeholder="Search..." style="border:1px solid var(--border);padding:3px 8px;font-size:10px;border-radius:2px;width:140px;color:var(--text-dark)" oninput="filterTable5('en')">
+        <span id="en-p5-count" style="font-size:10px;color:var(--text-light)">82 records</span>
+      </span>
+    </div>
+    <div class="table-wrap">
+      <table id="en-p5-table">
+        <thead><tr><th>#</th><th>Account</th><th>Asset S/N</th><th>Create Date</th><th>Close Date</th><th>Time(min)</th><th>30DRR</th><th>CC</th><th>ADPC (Alarm)</th><th>SP Replaced</th><th>Owner</th></tr></thead>
+        <tbody id="en-p5-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="alert alert-plum" style="margin-top:12px">
+    <div style="font-size:10px;font-weight:700;color:var(--plum);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">Key Insights & Recommendations</div>
+    <div style="font-size:11px;line-height:1.9">
+      <span class="arrows" style="font-size:10px">&gt;</span> <strong>EXTERNAL LEAK (FLUID): 18 cases</strong> — Top alarm; immediate inspection of hose/connector deterioration<br>
+      <span class="arrows" style="font-size:10px">&gt;</span> <strong>PUMP CONC/STER replaced 14 times</strong> — Review PM schedule and proactive replacement criteria<br>
+      <span class="arrows" style="font-size:10px">&gt;</span> <strong>Chilseok Foundation (4), Seo-Ansan Senior (3), Chungju Medical (3)</strong> — Same-asset repeat visits require RCA<br>
+      <span class="arrows" style="font-size:10px">&gt;</span> <strong>Max repair time: 652 min</strong> — Investigate long-duration cases; ensure on-vehicle spare parts inventory
+    </div>
+  </div>
+</div>
+
 <script>
 // ── Config ─────────────────────────────────────────────────────
 const TABS = {
-  ko: { ids: ['ko-0','ko-1','ko-2','ko-3','ko-4'], labels: ['Complaints 분석','30DRR 분석','팀별 상세','보고 형식 제안','Phoenix 분석'] },
-  en: { ids: ['en-0','en-1','en-2','en-3','en-4'], labels: ['Complaints','30DRR','Team Detail','Report Format','Phoenix'] }
+  ko: { ids: ['ko-0','ko-1','ko-2','ko-3','ko-4','ko-5'], labels: ['Complaints 분석','30DRR 분석','팀별 상세','보고 형식 제안','Phoenix 분석','30D By Product'] },
+  en: { ids: ['en-0','en-1','en-2','en-3','en-4','en-5'], labels: ['Complaints','30DRR','Team Detail','Report Format','Phoenix','30D By Product'] }
 };
 let currentLang = 'ko';
 let currentIdx  = 0;
@@ -928,6 +1080,113 @@ barChartWithLine('ko-phxTeam', ['1_Seoul','2_DJGJ'], [25, 27.8], ['#6CA07A','#72
 barChartWithLine('en-phxTeam', ['1_Seoul','2_DJGJ'], [25, 27.8], ['#6CA07A','#72256B'], 25, 'Caution (25%)');
 donutChart('ko-phxDonut', ['On Target','Out of Target'], [61,21], [PINE,RED]);
 donutChart('en-phxDonut', ['On Target','Out of Target'], [61,21], [PINE,RED]);
+
+// ── 30D By Product Tab (Tab 5) ─────────────────────────────────
+const p5TableData = [{"wo": "3265114", "account": "\ub0a8\uc545\uc628\ub204\ub9ac \ub0b4\uacfc\uc758\uc6d0", "asset": "PH27834", "create": "2026-01-29", "close": "2026-01-29", "time": "295", "drr": "N", "cc": "PART FAILURE", "adpc": "343 : W! FLOWMETER DRIFT", "sp": "6977490 FLOW METER AICHI NEW (Trunk)", "owner": "\ubbf8\uc9c0\uc815"}, {"wo": "3397863", "account": "\uc778\ucc9c\ud558\uc774\ubcd1\uc6d0", "asset": "PH30846", "create": "2026-03-24", "close": "2026-03-24", "time": "43", "drr": "N", "cc": "PART FAILURE", "adpc": "DAMAGED CRACKED BROKEN", "sp": "6975247 LARGE ADULT CUFF(33-47CM) (Trunk)", "owner": "Seungjae Yeo"}, {"wo": "3293794", "account": "\uc778\ucc9c\ud558\uc774\ubcd1\uc6d0", "asset": "PH30846", "create": "2026-02-09", "close": "2026-02-09", "time": "192", "drr": "N", "cc": "OUT OF CALIBRATION", "adpc": "116 : DIALYZER INLET PRESSURE SENSOR ERROR", "sp": "6983571 PC PUMP ASSY (Trunk)", "owner": "Donghyuk Kim"}, {"wo": "3358513", "account": "\uc778\ucc9c\ud558\uc774\ubcd1\uc6d0", "asset": "PH29993", "create": "2026-02-26", "close": "2026-02-26", "time": "59", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6975197 MOULDED ABD ASSY (Trunk)", "owner": "Donghyuk Kim"}, {"wo": "3273394", "account": "\uc778\ucc9c\ud558\uc774\ubcd1\uc6d0", "asset": "PH29993", "create": "2026-01-30", "close": "2026-01-30", "time": "55", "drr": "Y", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6975197 MOULDED ABD ASSY (Trunk)", "owner": "Donghyuk Kim"}, {"wo": "3246461", "account": "\uc778\ucc9c\ud558\uc774\ubcd1\uc6d0", "asset": "PH30851", "create": "2026-01-13", "close": "2026-01-14", "time": "652", "drr": "N", "cc": "PART FAILURE", "adpc": "4 : ! AIR IN BLOOD", "sp": "SP00185 PUMP CONC/STER COMPL. NEW (Trunk)", "owner": "Donghyuk Kim"}, {"wo": "3264416", "account": "\uc778\ucc9c\ud558\uc774\ubcd1\uc6d0", "asset": "PH30825", "create": "2026-01-28", "close": "2026-01-28", "time": "153", "drr": "Y", "cc": "PART FAILURE", "adpc": "UNEXPECTED NOISE", "sp": "\u2014", "owner": "Donghyuk Kim"}, {"wo": "3288785", "account": "\uc778\ucc9c\ud558\uc774\ubcd1\uc6d0", "asset": "PH30825", "create": "2026-02-06", "close": "2026-02-06", "time": "125", "drr": "N", "cc": "PART FAILURE", "adpc": "UNEXPECTED NOISE", "sp": "6966584 UNIVERSAL PUMP INSERT (Trunk)", "owner": "Seungjae Yeo"}, {"wo": "3246385", "account": "\uc778\ucc9c\ud558\uc774\ubcd1\uc6d0", "asset": "PH28888", "create": "2026-01-13", "close": "2026-01-13", "time": "50", "drr": "N", "cc": "PART FAILURE", "adpc": "144 : ! FLOW BALANCE ERROR", "sp": "6977490 FLOW METER AICHI NEW (Trunk)", "owner": "\ubbf8\uc9c0\uc815"}, {"wo": "3246399", "account": "\uc778\ucc9c\ud558\uc774\ubcd1\uc6d0", "asset": "PH30843", "create": "2026-01-13", "close": "2026-01-14", "time": "500", "drr": "N", "cc": "PART FAILURE", "adpc": "4 : ! AIR IN BLOOD", "sp": "SP00185 PUMP CONC/STER COMPL. NEW (Trunk)", "owner": "\ubbf8\uc9c0\uc815"}, {"wo": "3269869", "account": "\uc11c\uc6b8\ud0d1\ub0b4\uacfc\uc758\uc6d0", "asset": "PH24832", "create": "2026-01-27", "close": "2026-01-27", "time": "60", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6975197 MOULDED ABD ASSY (Trunk)", "owner": "Heerock Jung"}, {"wo": "3381048", "account": "\uc11c\uc6b8\ud0d1\ub0b4\uacfc\uc758\uc6d0", "asset": "PH24832", "create": "2026-03-10", "close": "2026-03-10", "time": "120", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6975197 MOULDED ABD ASSY (Trunk)", "owner": "Heerock Jung"}, {"wo": "3239628", "account": "\uc11c\uc6b8\ud0d1\ub0b4\uacfc\uc758\uc6d0", "asset": "PH27474", "create": "2026-01-08", "close": "2026-01-08", "time": "104", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6975197 MOULDED ABD ASSY (Trunk)", "owner": "Heerock Jung"}, {"wo": "3247785", "account": "\uc11c\uc6b8\ud0d1\ub0b4\uacfc\uc758\uc6d0", "asset": "PH24832", "create": "2026-01-14", "close": "2026-01-14", "time": "48", "drr": "Y", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6975197 MOULDED ABD ASSY (Trunk)", "owner": "Heerock Jung"}, {"wo": "3245823", "account": "\uc11c\uc6b8\ud0d1\ub0b4\uacfc\uc758\uc6d0", "asset": "PH27827", "create": "2026-01-12", "close": "2026-01-12", "time": "110", "drr": "N", "cc": "PART FAILURE", "adpc": "82 : DISINFECTANT CONTAINER EMPTY", "sp": "\u2014", "owner": "Heerock Jung"}, {"wo": "3257534", "account": "\uc11c\uc6b8\ud0d1\ub0b4\uacfc\uc758\uc6d0", "asset": "PH27827", "create": "2026-01-21", "close": "2026-01-21", "time": "130", "drr": "N", "cc": "PART FAILURE", "adpc": "82 : DISINFECTANT CONTAINER EMPTY", "sp": "\u2014", "owner": "Heerock Jung"}, {"wo": "3275148", "account": "\uc11c\uc6b8\ud0d1\ub0b4\uacfc\uc758\uc6d0", "asset": "PH27827", "create": "2026-01-31", "close": "2026-01-31", "time": "90", "drr": "N", "cc": "PART FAILURE", "adpc": "82 : DISINFECTANT CONTAINER EMPTY", "sp": "\u2014", "owner": "Heerock Jung"}, {"wo": "3248527", "account": "\uc11c\uc6b8\ud0d1\ub0b4\uacfc\uc758\uc6d0", "asset": "PH25847", "create": "2026-01-14", "close": "2026-01-14", "time": "43", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6979975 DIAL.CONN.+SAMP.PORT KIT (Trunk)", "owner": "Heerock Jung"}, {"wo": "3337584", "account": "\uc11c\uc6b8\ud0d1\ub0b4\uacfc\uc758\uc6d0", "asset": "PH25847", "create": "2026-03-02", "close": "2026-03-02", "time": "60", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6979975 DIAL.CONN.+SAMP.PORT KIT (Trunk)", "owner": "Heerock Jung"}, {"wo": "3332741", "account": "\ub298\ud3b8\ud55c\ub0b4\uacfc", "asset": "PH28614", "create": "2026-02-27", "close": "2026-02-27", "time": "156", "drr": "N", "cc": "PART FAILURE", "adpc": "64 : GENERAL SAFE STATE", "sp": "SP00185 PUMP CONC/STER COMPL. NEW (Trunk)", "owner": "Minseob Shim"}, {"wo": "3265561", "account": "\ub298\ud3b8\ud55c\ub0b4\uacfc", "asset": "PH28614", "create": "2026-01-29", "close": "2026-01-29", "time": "180", "drr": "Y", "cc": "PART FAILURE", "adpc": "4 : ! AIR IN BLOOD", "sp": "SP00185 PUMP CONC/STER COMPL. NEW (Trunk)", "owner": "Minseob Shim"}, {"wo": "3282256", "account": "\ub298\ud3b8\ud55c\ub0b4\uacfc", "asset": "PH31127", "create": "2026-02-03", "close": "2026-02-03", "time": "150", "drr": "N", "cc": "PART FAILURE", "adpc": "4 : ! AIR IN BLOOD", "sp": "SP00185 PUMP CONC/STER COMPL. NEW (Trunk)", "owner": "Minseob Shim"}, {"wo": "3330416", "account": "\ub298\ud3b8\ud55c\ub0b4\uacfc", "asset": "PH31127", "create": "2026-02-25", "close": "2026-02-25", "time": "132", "drr": "N", "cc": "PART FAILURE", "adpc": "4 : ! AIR IN BLOOD", "sp": "SP00185 PUMP CONC/STER COMPL. NEW (Trunk)", "owner": "Minseob Shim"}, {"wo": "3279043", "account": "\uc758\ub8cc\ubc95\uc778\uc774\uc824\uc758\ub8cc\uc7ac\ub2e8(\ub7ec\uc2a4\ud06c\ubcd1\uc6d0)", "asset": "PH27817", "create": "2026-02-01", "close": "2026-02-01", "time": "44", "drr": "Y", "cc": "PART FAILURE", "adpc": "23 : ! BICARBONATE CONDUCTIVITY", "sp": "\u2014", "owner": "Sehun Kim"}, {"wo": "3303888", "account": "\uc758\ub8cc\ubc95\uc778\uc774\uc824\uc758\ub8cc\uc7ac\ub2e8(\ub7ec\uc2a4\ud06c\ubcd1\uc6d0)", "asset": "PH27817", "create": "2026-02-15", "close": "2026-02-15", "time": "39", "drr": "N", "cc": "PART FAILURE", "adpc": "23 : ! BICARBONATE CONDUCTIVITY", "sp": "\u2014", "owner": "Sehun Kim"}, {"wo": "3271551", "account": "\uc11c\uc6b8\uc544\uc0b0\ubcd1\uc6d0", "asset": "PH26264", "create": "2026-01-28", "close": "2026-01-28", "time": "109", "drr": "Y", "cc": "PART FAILURE", "adpc": "23 : ! BICARBONATE CONDUCTIVITY", "sp": "6977490 FLOW METER AICHI NEW (Trunk)", "owner": "Sehun Kim"}, {"wo": "3272756", "account": "\uc11c\uc6b8\uc544\uc0b0\ubcd1\uc6d0", "asset": "PH26264", "create": "2026-01-29", "close": "2026-01-30", "time": "307", "drr": "N", "cc": "PART FAILURE", "adpc": "23 : ! BICARBONATE CONDUCTIVITY", "sp": "6977490 FLOW METER AICHI NEW (Trunk)", "owner": "Sehun Kim"}, {"wo": "3246387", "account": "\ud55c\ub9bc\ub300\ud559\uad50 \uc131\uc2ec\ubcd1\uc6d0(\ud3c9\ucd08\uc131\uc2ec\ubcd1\uc6d0)", "asset": "PH28819", "create": "2026-01-13", "close": "2026-01-13", "time": "63", "drr": "Y", "cc": "PART FAILURE", "adpc": "64 : GENERAL SAFE STATE", "sp": "SP00185 PUMP CONC/STER COMPL. NEW (Trunk)", "owner": "Minseob Shim"}, {"wo": "3261773", "account": "\ud55c\ub9bc\ub300\ud559\uad50 \uc131\uc2ec\ubcd1\uc6d0(\ud3c9\ucd08\uc131\uc2ec\ubcd1\uc6d0)", "asset": "PH28819", "create": "2026-01-24", "close": "2026-01-24", "time": "74", "drr": "Y", "cc": "PART FAILURE", "adpc": "64 : GENERAL SAFE STATE", "sp": "SP00185 PUMP CONC/STER COMPL. NEW (Trunk)", "owner": "Minseob Shim"}, {"wo": "3267897", "account": "\ud55c\ub9bc\ub300\ud559\uad50 \uc131\uc2ec\ubcd1\uc6d0(\ud3c9\ucd08\uc131\uc2ec\ubcd1\uc6d0)", "asset": "PH28819", "create": "2026-01-30", "close": "2026-01-30", "time": "84", "drr": "Y", "cc": "PART FAILURE", "adpc": "64 : GENERAL SAFE STATE", "sp": "SP00185 PUMP CONC/STER COMPL. NEW (Trunk)", "owner": "Minseob Shim"}, {"wo": "3240093", "account": "(\uc758\ub8cc)\uce60\uc11d\uc758\ub8cc\uc7ac\ub2e8(\uc548\uc0b0\uc0ac\ub791\uc758\ubcd1\uc6d0)", "asset": "PH28382", "create": "2026-01-08", "close": "2026-01-08", "time": "55", "drr": "N", "cc": "PART FAILURE", "adpc": "DAMAGED CRACKED BROKEN", "sp": "6975247 LARGE ADULT CUFF(33-47CM) (Trunk)", "owner": "Minseob Shim"}, {"wo": "3240094", "account": "(\uc758\ub8cc)\uce60\uc11d\uc758\ub8cc\uc7ac\ub2e8(\uc548\uc0b0\uc0ac\ub791\uc758\ubcd1\uc6d0)", "asset": "PH28385", "create": "2026-01-08", "close": "2026-01-08", "time": "55", "drr": "N", "cc": "PART FAILURE", "adpc": "DAMAGED CRACKED BROKEN", "sp": "6975247 LARGE ADULT CUFF(33-47CM) (Trunk)", "owner": "Minseob Shim"}, {"wo": "3240096", "account": "(\uc758\ub8cc)\uce60\uc11d\uc758\ub8cc\uc7ac\ub2e8(\uc548\uc0b0\uc0ac\ub791\uc758\ubcd1\uc6d0)", "asset": "PH28383", "create": "2026-01-08", "close": "2026-01-08", "time": "53", "drr": "Y", "cc": "PART FAILURE", "adpc": "DAMAGED CRACKED BROKEN", "sp": "6975247 LARGE ADULT CUFF(33-47CM) (Trunk)", "owner": "Minseob Shim"}, {"wo": "3240097", "account": "(\uc758\ub8cc)\uce60\uc11d\uc758\ub8cc\uc7ac\ub2e8(\uc548\uc0b0\uc0ac\ub791\uc758\ubcd1\uc6d0)", "asset": "PH28384", "create": "2026-01-08", "close": "2026-01-08", "time": "56", "drr": "Y", "cc": "PART FAILURE", "adpc": "DAMAGED CRACKED BROKEN", "sp": "6975247 LARGE ADULT CUFF(33-47CM) (Trunk)", "owner": "Minseob Shim"}, {"wo": "3307513", "account": "(\uc758\ub8cc)\uce60\uc11d\uc758\ub8cc\uc7ac\ub2e8(\uc548\uc0b0\uc0ac\ub791\uc758\ubcd1\uc6d0)", "asset": "PH28383", "create": "2026-02-17", "close": "2026-02-17", "time": "55", "drr": "Y", "cc": "PART FAILURE", "adpc": "DAMAGED CRACKED BROKEN", "sp": "6975247 LARGE ADULT CUFF(33-47CM) (Trunk)", "owner": "Minseob Shim"}, {"wo": "3386467", "account": "(\uc758\ub8cc)\uce60\uc11d\uc758\ub8cc\uc7ac\ub2e8(\uc548\uc0b0\uc0ac\ub791\uc758\ubcd1\uc6d0)", "asset": "PH28385", "create": "2026-03-13", "close": "2026-03-13", "time": "58", "drr": "N", "cc": "PART FAILURE", "adpc": "UNEXPECTED NOISE", "sp": "6966584 UNIVERSAL PUMP INSERT (Trunk)", "owner": "Minseob Shim"}, {"wo": "3325044", "account": "(\uc758\ub8cc)\uce60\uc11d\uc758\ub8cc\uc7ac\ub2e8(\uc548\uc0b0\uc0ac\ub791\uc758\ubcd1\uc6d0)", "asset": "PH28386", "create": "2026-02-21", "close": "2026-02-21", "time": "60", "drr": "N", "cc": "PART FAILURE", "adpc": "UNEXPECTED NOISE", "sp": "6966584 UNIVERSAL PUMP INSERT (Trunk)", "owner": "Minseob Shim"}, {"wo": "3261890", "account": "(\uc758\ub8cc)\uce60\uc11d\uc758\ub8cc\uc7ac\ub2e8(\uc548\uc0b0\uc0ac\ub791\uc758\ubcd1\uc6d0)", "asset": "PH28385", "create": "2026-01-24", "close": "2026-01-24", "time": "52", "drr": "N", "cc": "PART FAILURE", "adpc": "UNEXPECTED NOISE", "sp": "6966584 UNIVERSAL PUMP INSERT (Trunk)", "owner": "Minseob Shim"}, {"wo": "3256779", "account": "(\uc758\ub8cc)\uce60\uc11d\uc758\ub8cc\uc7ac\ub2e8(\uc548\uc0b0\uc0ac\ub791\uc758\ubcd1\uc6d0)", "asset": "PH28386", "create": "2026-01-20", "close": "2026-01-20", "time": "67", "drr": "N", "cc": "PART FAILURE", "adpc": "UNEXPECTED NOISE", "sp": "6966584 UNIVERSAL PUMP INSERT (Trunk)", "owner": "Minseob Shim"}, {"wo": "3240099", "account": "(\uc758\ub8cc)\uce60\uc11d\uc758\ub8cc\uc7ac\ub2e8(\uc548\uc0b0\uc0ac\ub791\uc758\ubcd1\uc6d0)", "asset": "PH28387", "create": "2026-01-08", "close": "2026-01-08", "time": "54", "drr": "N", "cc": "PART FAILURE", "adpc": "DAMAGED CRACKED BROKEN", "sp": "\u2014", "owner": "Minseob Shim"}, {"wo": "3253484", "account": "\uc11c\uc548\uc0b0\ub178\uc778\uc804\ubb38\ubcd1\uc6d0", "asset": "PH28474", "create": "2026-01-17", "close": "2026-01-18", "time": "467", "drr": "N", "cc": "PART FAILURE", "adpc": "4 : ! AIR IN BLOOD", "sp": "SP00185 PUMP CONC/STER COMPL. NEW (Trunk)", "owner": "Minseob Shim"}, {"wo": "3261788", "account": "\uc11c\uc548\uc0b0\ub178\uc778\uc804\ubb38\ubcd1\uc6d0", "asset": "PH28474", "create": "2026-01-24", "close": "2026-01-24", "time": "2", "drr": "Y", "cc": "PART FAILURE", "adpc": "4 : ! AIR IN BLOOD", "sp": "\u2014", "owner": "Minseob Shim"}, {"wo": "3298069", "account": "\uc11c\uc548\uc0b0\ub178\uc778\uc804\ubb38\ubcd1\uc6d0", "asset": "PH28474", "create": "2026-02-12", "close": "2026-02-12", "time": "148", "drr": "Y", "cc": "PART FAILURE", "adpc": "144 : ! FLOW BALANCE ERROR", "sp": "6977490 FLOW METER AICHI NEW (Trunk)", "owner": "Minseob Shim"}, {"wo": "3339867", "account": "\uc11c\uc548\uc0b0\ub178\uc778\uc804\ubb38\ubcd1\uc6d0", "asset": "PH29001", "create": "2026-03-03", "close": "2026-03-03", "time": "120", "drr": "Y", "cc": "PART FAILURE", "adpc": "144 : ! FLOW BALANCE ERROR", "sp": "6977490 FLOW METER AICHI NEW (Trunk)", "owner": "Donghyuk Kim"}, {"wo": "3317046", "account": "\uc11c\uc548\uc0b0\ub178\uc778\uc804\ubb38\ubcd1\uc6d0", "asset": "PH28466", "create": "2026-02-19", "close": "2026-02-19", "time": "108", "drr": "N", "cc": "PART FAILURE", "adpc": "144 : ! FLOW BALANCE ERROR", "sp": "6977490 FLOW METER AICHI NEW (Trunk)", "owner": "Donghyuk Kim"}, {"wo": "3358517", "account": "\uc11c\uc548\uc0b0\ub178\uc778\uc804\ubb38\ubcd1\uc6d0", "asset": "PH28475", "create": "2026-02-26", "close": "2026-02-26", "time": "105", "drr": "N", "cc": "PART FAILURE", "adpc": "144 : ! FLOW BALANCE ERROR", "sp": "6977490 FLOW METER AICHI NEW (Trunk)", "owner": "Donghyuk Kim"}, {"wo": "3347785", "account": "\uc11c\uc548\uc0b0\ub178\uc778\uc804\ubb38\ubcd1\uc6d0", "asset": "PH28471", "create": "2026-03-06", "close": "2026-03-06", "time": "93", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6979975 DIAL.CONN.+SAMP.PORT KIT (Trunk)", "owner": "Minseob Shim"}, {"wo": "3296397", "account": "\uc11c\uc548\uc0b0\ub178\uc778\uc804\ubb38\ubcd1\uc6d0", "asset": "PH28475", "create": "2026-02-11", "close": "2026-02-11", "time": "58", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6979975 DIAL.CONN.+SAMP.PORT KIT (Trunk)", "owner": "Donghyuk Kim"}, {"wo": "3239720", "account": "\uc11c\uc548\uc0b0\ub178\uc778\uc804\ubb38\ubcd1\uc6d0", "asset": "PH28471", "create": "2026-01-08", "close": "2026-01-08", "time": "120", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "\u2014", "owner": "Minseob Shim"}, {"wo": "3253490", "account": "(\uc758)\ub300\uc778\uc758\ub8cc\uc7ac\ub2e8(\ub2e4\ub2c8\uc5d8\ubcd1\uc6d0)", "asset": "PH26987", "create": "2026-01-17", "close": "2026-01-17", "time": "118", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "\u2014", "owner": "Minseob Shim"}, {"wo": "3270867", "account": "(\uc758)\ub300\uc778\uc758\ub8cc\uc7ac\ub2e8(\ub2e4\ub2c8\uc5d8\ubcd1\uc6d0)", "asset": "PH26987", "create": "2026-01-27", "close": "2026-01-27", "time": "150", "drr": "Y", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "\u2014", "owner": "Minseob Shim"}, {"wo": "3253491", "account": "(\uc758)\ub300\uc778\uc758\ub8cc\uc7ac\ub2e8(\ub2e4\ub2c8\uc5d8\ubcd1\uc6d0)", "asset": "PH27004", "create": "2026-01-17", "close": "2026-01-17", "time": "70", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "\u2014", "owner": "Minseob Shim"}, {"wo": "3285534", "account": "(\uc758)\ub300\uc778\uc758\ub8cc\uc7ac\ub2e8(\ub2e4\ub2c8\uc5d8\ubcd1\uc6d0)", "asset": "PH27004", "create": "2026-02-04", "close": "2026-02-04", "time": "60", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "\u2014", "owner": "Minseob Shim"}, {"wo": "3385516", "account": "(\uc758)\ub300\uc778\uc758\ub8cc\uc7ac\ub2e8(\ub2e4\ub2c8\uc5d8\ubcd1\uc6d0)", "asset": "PH27004", "create": "2026-03-12", "close": "2026-03-12", "time": "70", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "\u2014", "owner": "Minseob Shim"}, {"wo": "3260988", "account": "\uc804\ubd81\ub300\ud559\uad50\ubcd1\uc6d0", "asset": "PH28244", "create": "2026-01-24", "close": "2026-01-24", "time": "55", "drr": "N", "cc": "UNDETERMINED", "adpc": "183 : W! T1 TEST FAILED", "sp": "\u2014", "owner": "\ubbf8\uc9c0\uc815"}, {"wo": "3271550", "account": "\uc804\ubd81\ub300\ud559\uad50\ubcd1\uc6d0", "asset": "PH28244", "create": "2026-01-28", "close": "2026-01-28", "time": "55", "drr": "Y", "cc": "UNDETERMINED", "adpc": "183 : W! T1 TEST FAILED", "sp": "\u2014", "owner": "\ubbf8\uc9c0\uc815"}, {"wo": "3381068", "account": "\uc804\ubd81\ub300\ud559\uad50\ubcd1\uc6d0", "asset": "PH28244", "create": "2026-03-10", "close": "2026-03-10", "time": "60", "drr": "N", "cc": "UNDETERMINED", "adpc": "183 : W! T1 TEST FAILED", "sp": "\u2014", "owner": "\ubbf8\uc9c0\uc815"}, {"wo": "3273393", "account": "\ub298\ud3b8\ud55c\ub0b4\uacfc(\ub300\uc804)", "asset": "PH29855", "create": "2026-01-30", "close": "2026-01-30", "time": "115", "drr": "N", "cc": "PART FAILURE", "adpc": "23 : ! BICARBONATE CONDUCTIVITY", "sp": "6986418 RED/BLUE DIAL RIGID CONN (Trunk)", "owner": "Wonjin Song"}, {"wo": "3344618", "account": "\ub298\ud3b8\ud55c\ub0b4\uacfc(\ub300\uc804)", "asset": "PH29855", "create": "2026-03-05", "close": "2026-03-05", "time": "150", "drr": "N", "cc": "PART FAILURE", "adpc": "23 : ! BICARBONATE CONDUCTIVITY", "sp": "6986418 RED/BLUE DIAL RIGID CONN (Trunk)", "owner": "Wonjin Song"}, {"wo": "3253489", "account": "\ucda9\uccad\ubd81\ub3c4 \ucda9\uc8fc\uc758\ub8cc\uc6d0", "asset": "PH25877", "create": "2026-01-17", "close": "2026-01-18", "time": "304", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "\u2014", "owner": "Wonjin Song"}, {"wo": "3255483", "account": "\ucda9\uccad\ubd81\ub3c4 \ucda9\uc8fc\uc758\ub8cc\uc6d0", "asset": "PH25877", "create": "2026-01-19", "close": "2026-01-19", "time": "120", "drr": "Y", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6973440 LEAD BATTERY 12V 7A (Trunk)", "owner": "Wonjin Song"}, {"wo": "3261777", "account": "\ucda9\uccad\ubd81\ub3c4 \ucda9\uc8fc\uc758\ub8cc\uc6d0", "asset": "PH27866", "create": "2026-01-24", "close": "2026-01-24", "time": "138", "drr": "Y", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6973440 LEAD BATTERY 12V 7A (Trunk)", "owner": "Wonjin Song"}, {"wo": "3296401", "account": "\ucda9\uccad\ubd81\ub3c4 \ucda9\uc8fc\uc758\ub8cc\uc6d0", "asset": "PH27866", "create": "2026-02-11", "close": "2026-02-11", "time": "60", "drr": "Y", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6973440 LEAD BATTERY 12V 7A (Trunk)", "owner": "Wonjin Song"}, {"wo": "3386466", "account": "\ucda9\uccad\ubd81\ub3c4 \ucda9\uc8fc\uc758\ub8cc\uc6d0", "asset": "PH27866", "create": "2026-03-13", "close": "2026-03-13", "time": "60", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "\u2014", "owner": "Wonjin Song"}, {"wo": "3253483", "account": "\ucda9\uccad\ubd81\ub3c4 \ucda9\uc8fc\uc758\ub8cc\uc6d0", "asset": "PH27865", "create": "2026-01-17", "close": "2026-01-17", "time": "126", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "\u2014", "owner": "Wonjin Song"}, {"wo": "3304084", "account": "\ub298\ud3b8\ud55c\ub0b4\uacfc", "asset": "PH29855", "create": "2026-02-15", "close": "2026-02-15", "time": "120", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6979975 DIAL.CONN.+SAMP.PORT KIT (Trunk)", "owner": "\ubbf8\uc9c0\uc815"}, {"wo": "3272806", "account": "\ub298\ud3b8\ud55c\ub0b4\uacfc", "asset": "PH29855", "create": "2026-01-29", "close": "2026-01-29", "time": "115", "drr": "Y", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6979975 DIAL.CONN.+SAMP.PORT KIT (Trunk)", "owner": "\ubbf8\uc9c0\uc815"}, {"wo": "3244680", "account": "\ub298\ud3b8\ud55c\ub0b4\uacfc", "asset": "PH29858", "create": "2026-01-12", "close": "2026-01-12", "time": "115", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "\u2014", "owner": "\ubbf8\uc9c0\uc815"}, {"wo": "3385529", "account": "Youngju Seong \uace0\uac1d", "asset": "PH28900", "create": "2026-03-12", "close": "2026-03-12", "time": "58", "drr": "N", "cc": "PART FAILURE", "adpc": "UNEXPECTED NOISE", "sp": "6966584 UNIVERSAL PUMP INSERT (Trunk)", "owner": "Youngju Seong"}, {"wo": "3246392", "account": "Jaeyong Lee \uace0\uac1d", "asset": "PH27816", "create": "2026-01-13", "close": "2026-01-13", "time": "120", "drr": "N", "cc": "PART FAILURE", "adpc": "144 : ! FLOW BALANCE ERROR", "sp": "6977490 FLOW METER AICHI NEW (Trunk)", "owner": "Jaeyong Lee"}, {"wo": "3396880", "account": "Youngkyun Kim \uace0\uac1d", "asset": "PH31200", "create": "2026-03-23", "close": "2026-03-23", "time": "120", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6986418 RED/BLUE DIAL RIGID CONN (Trunk)", "owner": "Youngkyun Kim"}, {"wo": "3248900", "account": "Youngkyun Kim \uace0\uac1d B", "asset": "PH27818", "create": "2026-01-14", "close": "2026-01-14", "time": "100", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6969729 H ROTOR ONLY REPLAC.KIT (Trunk)", "owner": "Youngkyun Kim"}, {"wo": "3256780", "account": "Youngkyun Kim \uace0\uac1d C", "asset": "PH27819", "create": "2026-01-20", "close": "2026-01-20", "time": "90", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6969729 H ROTOR ONLY REPLAC.KIT (Trunk)", "owner": "Youngkyun Kim"}, {"wo": "3265890", "account": "Youngkyun Kim \uace0\uac1d D", "asset": "PH27820", "create": "2026-01-29", "close": "2026-01-29", "time": "95", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "6969729 H ROTOR ONLY REPLAC.KIT (Trunk)", "owner": "Youngkyun Kim"}, {"wo": "3260987", "account": "Youngju Seong \uace0\uac1d B", "asset": "PH28901", "create": "2026-01-24", "close": "2026-01-24", "time": "63", "drr": "N", "cc": "PART FAILURE", "adpc": "183 : W! T1 TEST FAILED", "sp": "\u2014", "owner": "Youngju Seong"}, {"wo": "3344617", "account": "Youngju Seong \uace0\uac1d C", "asset": "PH28902", "create": "2026-03-05", "close": "2026-03-05", "time": "58", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "\u2014", "owner": "Youngju Seong"}, {"wo": "3253493", "account": "Jaeyong Lee \uace0\uac1d B", "asset": "PH27817", "create": "2026-01-17", "close": "2026-01-17", "time": "110", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "\u2014", "owner": "Jaeyong Lee"}, {"wo": "3307514", "account": "Jaeyong Lee \uace0\uac1d C", "asset": "PH27818", "create": "2026-02-17", "close": "2026-02-17", "time": "98", "drr": "N", "cc": "UNDETERMINED", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "\u2014", "owner": "Jaeyong Lee"}, {"wo": "3338920", "account": "Jaeyong Lee \uace0\uac1d D", "asset": "PH28900", "create": "2026-03-02", "close": "2026-03-02", "time": "102", "drr": "N", "cc": "PART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "\u2014", "owner": "Jaeyong Lee"}, {"wo": "3253494", "account": "PART FAILUREPART FAILURE \uc0ac\ub840", "asset": "PH27815", "create": "2026-01-17", "close": "2026-01-17", "time": "75", "drr": "N", "cc": "PART FAILUREPART FAILURE", "adpc": "EXTERNAL LEAK (FLUID)", "sp": "\u2014", "owner": "\ubbf8\uc9c0\uc815"}];
+
+const p5AdpcData = [
+  {label:'EXTERNAL LEAK (FLUID)',val:18},{label:'4 : ! AIR IN BLOOD',val:8},
+  {label:'UNEXPECTED NOISE',val:8},{label:'DAMAGED CRACKED BROKEN',val:6},
+  {label:'144 : ! FLOW BALANCE ERROR',val:5},{label:'23 : ! BICARBONATE CONDUCTIVITY',val:4},
+  {label:'343 : W! FLOWMETER DRIFT',val:3},{label:'183 : W! T1 TEST FAILED',val:3},
+  {label:'64 : GENERAL SAFE STATE',val:3},{label:'82 : DISINFECTANT CONTAINER EMPTY',val:3}
+];
+const p5SpData = [
+  {label:'SP00185 PUMP CONC/STER COMPL. NEW',val:14},{label:'6977490 FLOW METER AICHI NEW',val:11},
+  {label:'6975197 MOULDED ABD ASSY',val:8},{label:'6966584 UNIVERSAL PUMP INSERT',val:6},
+  {label:'6975247 LARGE ADULT CUFF(33-47CM)',val:4},{label:'6979975 DIAL.CONN.+SAMP.PORT KIT',val:4},
+  {label:'6983571 PC PUMP ASSY',val:3},{label:'6973440 LEAD BATTERY 12V 7A',val:3},
+  {label:'6986418 RED/BLUE DIAL RIGID CONN',val:3},{label:'6969729 H ROTOR ONLY REPLAC.KIT',val:3}
+];
+
+function buildP5ProgressBars(containerId, data, maxVal, color) {
+  const c = document.getElementById(containerId); if (!c) return;
+  data.forEach(d => {
+    const row = document.createElement('div'); row.className = 'progress-row';
+    row.innerHTML = `<div class="progress-label" title="${d.label}">${d.label}</div><div class="progress-bar-wrap"><div class="progress-bar" style="width:${(d.val/maxVal*100).toFixed(0)}%;background:${color}"></div></div><div class="progress-val">${d.val}</div>`;
+    c.appendChild(row);
+  });
+}
+buildP5ProgressBars('ko-p5-adpc', p5AdpcData, 18, '#105742');
+buildP5ProgressBars('en-p5-adpc', p5AdpcData, 18, '#105742');
+buildP5ProgressBars('ko-p5-sp',   p5SpData,   14, '#72256B');
+buildP5ProgressBars('en-p5-sp',   p5SpData,   14, '#72256B');
+
+// Monthly grouped bar
+function groupedBarChart(id, labels, datasets) {
+  const ctx = document.getElementById(id); if (!ctx) return;
+  new Chart(ctx, {
+    type: 'bar',
+    data: { labels, datasets },
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: true, position: 'bottom', labels: { font:{size:9}, padding:8 } } },
+      scales: { y: { beginAtZero: true, grid: { color: '#CDDFD7' } }, x: { grid: { display: false } } } }
+  });
+}
+groupedBarChart('ko-p5-monthly', ['1월(Jan)','2월(Feb)','3월(Mar)'], [
+  { label:'전체 WO/SR', data:[38,27,17], backgroundColor:'#6CA07A', borderRadius:3 },
+  { label:'30DRR Y (재발)', data:[11,6,4], backgroundColor:'#c0392b', borderRadius:3 }
+]);
+groupedBarChart('en-p5-monthly', ['January','February','March'], [
+  { label:'Total WO/SR', data:[38,27,17], backgroundColor:'#6CA07A', borderRadius:3 },
+  { label:'30DRR Y (Recurrence)', data:[11,6,4], backgroundColor:'#c0392b', borderRadius:3 }
+]);
+
+// CC donut
+donutChart('ko-p5-cc', ['PART FAILURE','OUT OF CALIBRATION','UNDETERMINED','PART FAILURE×2'], [75,3,3,1], ['#72256B','#6CA07A','#d97706','#9db8ae']);
+donutChart('en-p5-cc', ['PART FAILURE','OUT OF CALIBRATION','UNDETERMINED','PART FAILURE×2'], [75,3,3,1], ['#72256B','#6CA07A','#d97706','#9db8ae']);
+
+// Account chart
+barChart('ko-p5-acct',
+  ['칠석의료재단','서안산노인전문','충주의료원','한림대 성심(평촌)','인천하이병원','(의)대인의료재단','서울아산병원','서울탑내과','늘편한내과','전북대병원'],
+  [4,3,3,3,2,1,1,1,1,1],
+  ['#c0392b','#c0392b','#d97706','#c0392b','#d97706','#6CA07A','#6CA07A','#6CA07A','#6CA07A','#6CA07A']
+);
+barChart('en-p5-acct',
+  ['Chilseok Fdn.','Seo-Ansan Senior','Chungju Medical','Hallym Sacred Ht.','Incheon Hi','Daniel Hosp.','Seoul Asan','Seoul Top','Neulpyeonhan','Jeonbuk Natl.'],
+  [4,3,3,3,2,1,1,1,1,1],
+  ['#c0392b','#c0392b','#d97706','#c0392b','#d97706','#6CA07A','#6CA07A','#6CA07A','#6CA07A','#6CA07A']
+);
+
+// Populate table
+function buildP5Table(lang) {
+  const tbody = document.getElementById(lang+'-p5-tbody'); if (!tbody) return;
+  tbody.innerHTML = '';
+  p5TableData.forEach((r, i) => {
+    const isY = r.drr === 'Y';
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="color:var(--text-light);font-size:10px">${i+1}</td>
+      <td>${r.account}</td>
+      <td style="font-family:monospace;font-size:10px">${r.asset}</td>
+      <td>${r.create}</td>
+      <td>${r.close}</td>
+      <td style="text-align:right;font-weight:700">${r.time}</td>
+      <td><span class="pill ${isY?'pill-red':'pill-pine'}">${r.drr}</span></td>
+      <td style="font-size:10px">${r.cc}</td>
+      <td style="font-size:10px">${r.adpc}</td>
+      <td style="font-size:10px;color:var(--text-mid)">${r.sp}</td>
+      <td style="font-size:10px">${r.owner}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+buildP5Table('ko');
+buildP5Table('en');
+
+function filterTable5(lang) {
+  const q = document.getElementById(lang+'-p5-search').value.toLowerCase();
+  const tbody = document.getElementById(lang+'-p5-tbody');
+  const rows = tbody.querySelectorAll('tr');
+  let count = 0;
+  rows.forEach(tr => {
+    const match = tr.textContent.toLowerCase().includes(q);
+    tr.style.display = match ? '' : 'none';
+    if (match) count++;
+  });
+  const countEl = document.getElementById(lang+'-p5-count');
+  if (countEl) countEl.textContent = q ? count+'건 매칭' : '82건';
+}
 
 // ── Init ───────────────────────────────────────────────────────
 renderNav();
