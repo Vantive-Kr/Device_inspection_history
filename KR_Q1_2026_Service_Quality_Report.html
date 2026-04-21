@@ -3,23 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KR Q1 2026 데이터 분석 보고서</title>
+<title>KR Q1 2026 Service Quality Report</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
 <style>
   :root {
     color-scheme: light;
-    --plum: #72256B;
-    --plum-dark: #5a1a54;
-    --plum-light: #f0e4ef;
-    --pine: #105742;
-    --pine-light: #e0ede9;
-    --eucalyptus: #6CA07A;
-    --sage: #CDDFD7;
-    --cream: #FFFAEB;
-    --cream-dark: #f5f0e0;
-    --text-dark: #1a1a2e;
-    --text-mid: #3d3d5c;
-    --text-light: #6b7280;
+    --plum: #72256B; --plum-dark: #5a1a54; --plum-light: #f0e4ef;
+    --pine: #105742; --pine-light: #e0ede9;
+    --eucalyptus: #6CA07A; --sage: #CDDFD7;
+    --cream: #FFFAEB; --cream-dark: #f5f0e0;
+    --text-dark: #1a1a2e; --text-mid: #3d3d5c; --text-light: #6b7280;
     --border: #ddd8c4;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,8 +27,8 @@
   .arrow-icon { color: rgba(255,255,255,0.5); font-size: 13px; font-weight: 900; letter-spacing: -2px; margin-right: 8px; }
   .badge { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 2px; padding: 3px 10px; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
 
-  .lang-toggle { display: flex; gap: 4px; }
-  .lang-btn { padding: 4px 12px; border: 1px solid rgba(255,255,255,0.4); background: transparent; color: white; font-size: 11px; font-weight: 700; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
+  .lang-toggle { display: flex; gap: 4px; flex-shrink: 0; margin-left: 16px; }
+  .lang-btn { padding: 4px 14px; border: 1px solid rgba(255,255,255,0.4); background: transparent; color: white; font-size: 11px; font-weight: 700; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
   .lang-btn.active { background: white; color: var(--plum); }
 
   .nav-tabs { display: flex; background: var(--pine); padding: 0 24px; overflow-x: auto; }
@@ -69,7 +62,6 @@
 
   .card { background: white; border-radius: 3px; padding: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); margin-bottom: 12px; }
   .card-title { font-size: 10px; font-weight: 700; color: var(--pine); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--sage); display: flex; align-items: center; gap: 8px; }
-  .card-title svg { flex-shrink: 0; }
 
   .chart-wrap { position: relative; height: 210px; }
   .chart-wrap-sm { position: relative; height: 170px; }
@@ -80,22 +72,20 @@
   td { padding: 6px 10px; border-bottom: 1px solid var(--cream-dark); color: var(--text-dark); }
   tr:hover td { background: #fdf8f0; }
 
-  .pill { display: inline-block; padding: 2px 7px; border-radius: 2px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; }
-  .pill-plum { background: var(--plum-light); color: var(--plum); }
+  .pill { display: inline-block; padding: 2px 7px; border-radius: 2px; font-size: 9px; font-weight: 700; text-transform: uppercase; }
   .pill-pine { background: var(--pine-light); color: var(--pine); }
   .pill-red { background: #fde8e8; color: #9b1c1c; }
   .pill-orange { background: #fff0e0; color: #9a4000; }
   .pill-gray { background: var(--cream-dark); color: var(--text-mid); }
 
   .progress-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
-  .progress-label { width: 170px; font-size: 10px; color: var(--text-mid); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .progress-label { width: 175px; font-size: 10px; color: var(--text-mid); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
   .progress-bar-wrap { flex: 1; background: var(--sage); border-radius: 2px; height: 12px; }
   .progress-bar { height: 100%; border-radius: 2px; }
-  .progress-val { width: 32px; text-align: right; font-size: 10px; font-weight: 700; color: var(--pine); }
+  .progress-val { width: 32px; text-align: right; font-size: 10px; font-weight: 700; color: var(--pine); flex-shrink: 0; }
 
   .alert { border-radius: 3px; padding: 10px 14px; margin-bottom: 12px; font-size: 11px; line-height: 1.7; }
   .alert-plum { background: var(--plum-light); border-left: 3px solid var(--plum); color: var(--plum-dark); }
-  .alert-pine { background: var(--pine-light); border-left: 3px solid var(--pine); color: var(--pine); }
   .alert-sage { background: var(--sage); border-left: 3px solid var(--eucalyptus); color: var(--pine); }
   .alert-orange { background: #fff0e0; border-left: 3px solid #e07000; color: #7a3800; }
 
@@ -107,8 +97,6 @@
   .team-body { padding: 14px; background: white; border: 1px solid var(--border); border-top: none; }
 
   .tag { display: inline-block; background: var(--plum-light); color: var(--plum); border-radius: 2px; padding: 2px 7px; font-size: 9px; font-weight: 700; margin: 2px; text-transform: uppercase; }
-  .tag-pine { background: var(--pine-light); color: var(--pine); }
-
   .divider { height: 1px; background: var(--border); margin: 14px 0; }
   .note { font-size: 10px; color: var(--text-light); margin-top: 8px; line-height: 1.6; }
   .hl-plum { color: var(--plum); font-weight: 700; }
@@ -120,13 +108,7 @@
   .report-num { font-size: 11px; font-weight: 900; color: var(--plum); }
   .report-label { font-size: 11px; font-weight: 700; color: var(--pine); margin-bottom: 2px; }
   .report-desc { font-size: 10px; color: var(--text-light); }
-
-  /* Print styles */
-  @media print {
-    .nav-tabs, .lang-toggle { display: none; }
-    .section { display: block !important; page-break-after: always; }
-    body { background: white; }
-  }
+  .insight-box { border-radius: 3px; padding: 14px; }
 </style>
 </head>
 <body>
@@ -153,14 +135,16 @@
 </div>
 
 <div class="nav-tabs" id="navTabs">
-  <div class="nav-tab active" onclick="switchTab('complaints')">Complaints 분석</div>
-  <div class="nav-tab" onclick="switchTab('drr')">30DRR 분석</div>
-  <div class="nav-tab" onclick="switchTab('team')">팀별 상세</div>
-  <div class="nav-tab" onclick="switchTab('report')">보고 형식 제안</div>
+  <div class="nav-tab active" onclick="switchTab(0)">–</div>
+  <div class="nav-tab" onclick="switchTab(1)">–</div>
+  <div class="nav-tab" onclick="switchTab(2)">–</div>
+  <div class="nav-tab" onclick="switchTab(3)">–</div>
 </div>
 
-<!-- ========== TAB: COMPLAINTS ========== -->
-<div class="content section active" id="tab-complaints">
+<!-- ===================== KO SECTIONS ===================== -->
+
+<!-- KO: COMPLAINTS -->
+<div class="content section" id="tab-ko-0">
   <div class="section-title"><span class="arrows">&gt;&gt;&gt;</span> Complaints 개요</div>
   <div class="kpi-grid">
     <div class="kpi-card"><div class="kpi-label">총 Complaints</div><div class="kpi-value">1,204</div><div class="kpi-sub">Q1 2026 전체</div></div>
@@ -172,33 +156,33 @@
   <div class="grid-2">
     <div class="card">
       <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="7" height="18"/><rect x="14" y="8" width="7" height="13"/></svg>팀별 Complaint 건수</div>
-      <div class="chart-wrap"><canvas id="teamBarChart"></canvas></div>
+      <div class="chart-wrap"><canvas id="ko-teamBar"></canvas></div>
     </div>
     <div class="card">
-      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 12 L12 3"/><path d="M12 12 L19 16"/></svg>WO/SR Area 분류</div>
-      <div class="chart-wrap"><canvas id="woAreaChart"></canvas></div>
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 12L12 3"/><path d="M12 12L19 16"/></svg>WO/SR Area 분류</div>
+      <div class="chart-wrap"><canvas id="ko-woArea"></canvas></div>
       <div class="note">Repair 94.4%(1,136건) vs Technical Assistance 5.6%(68건) — 수리 요청 중심 구조</div>
     </div>
   </div>
   <div class="grid-2">
     <div class="card">
       <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l4-4 4 4 4-4 4 4"/><path d="M3 15l4-4 4 4 4-4 4 4"/></svg>Product Family</div>
-      <div class="chart-wrap-sm"><canvas id="productChart"></canvas></div>
+      <div class="chart-wrap-sm"><canvas id="ko-product"></canvas></div>
       <div class="note">Artis-Evosys 98.3%(1,183건) · PrisMax 1.7%(21건)</div>
     </div>
     <div class="card">
       <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>월별 CMS 이관 건수</div>
-      <div class="chart-wrap-sm"><canvas id="monthlyChart"></canvas></div>
+      <div class="chart-wrap-sm"><canvas id="ko-monthly"></canvas></div>
       <div class="note">1월 963건(80%) 집중 → 분기 초 부하 집중 현상</div>
     </div>
   </div>
   <div class="card">
     <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s-8-5-8-12a8 8 0 0116 0c0 7-8 12-8 12z"/><circle cx="12" cy="10" r="2"/></svg>Top 15 불량 유형 (ARPC 코드별)</div>
-    <div id="arpc-bars"></div>
+    <div id="ko-arpc-bars"></div>
     <div class="note">💡 PC Pump 고장(111, 161건) 1위. 누수 관련 코드(External/Internal Leak·469·539·498·506) 합산 ~250건+ — 누수가 실질적 최대 카테고리.</div>
   </div>
   <div class="card">
-    <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-6 9 6v11a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><path d="M9 22V12h6v10"/></svg>팀별 주요 거래처 Top 5 (Complaint 건수 기준)</div>
+    <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-6 9 6v11a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><path d="M9 22V12h6v10"/></svg>팀별 주요 거래처 Top 5</div>
     <div class="grid-3" style="margin-bottom:0">
       <div>
         <div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">1_Seoul — 62개 거래처</div>
@@ -234,8 +218,8 @@
   </div>
 </div>
 
-<!-- ========== TAB: 30DRR ========== -->
-<div class="content section" id="tab-drr">
+<!-- KO: 30DRR -->
+<div class="content section" id="tab-ko-1">
   <div class="alert alert-plum">
     <strong>30DRR 기준</strong> — Target Met ≤ 20% &nbsp;|&nbsp; Caution ≤ 25%<br>
     동일 Asset 30일 이내 재접수 WO/SR 비율. Y = 재발 · N = 미재발<br>
@@ -251,60 +235,56 @@
   <div class="grid-2">
     <div class="card">
       <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>팀별 30DRR % vs Target</div>
-      <div class="chart-wrap"><canvas id="drrKpiChart"></canvas></div>
+      <div class="chart-wrap"><canvas id="ko-drrKpi"></canvas></div>
     </div>
     <div class="card">
-      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 12 L12 3"/><path d="M12 12 L19 16"/></svg>재발(Y) vs 미재발(N)</div>
-      <div class="chart-wrap"><canvas id="drrYNChart"></canvas></div>
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 12L12 3"/><path d="M12 12L19 16"/></svg>재발(Y) vs 미재발(N)</div>
+      <div class="chart-wrap"><canvas id="ko-drrYN"></canvas></div>
     </div>
   </div>
   <div class="card">
     <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4"/><path d="M16 11l2 2 4-4"/></svg>WOLI/ACT Owner별 30DRR 현황</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Team</th><th>Owner</th><th>총건</th><th>Out of Target (Y)</th><th>On Target (N)</th><th>재발률</th><th>상태</th></tr></thead>
-        <tbody>
-          <tr><td>1_Seoul</td><td>Minseob Shim</td><td>23</td><td><span class="pill pill-red">9</span></td><td>14</td><td class="hl-red">39.1%</td><td><span class="pill pill-red">주의</span></td></tr>
-          <tr><td>2_DJGJ</td><td>Wonjin Song</td><td>6</td><td><span class="pill pill-red">4</span></td><td>2</td><td class="hl-red">66.7%</td><td><span class="pill pill-red">주의</span></td></tr>
-          <tr><td>1_Seoul</td><td>Sehun Kim</td><td>3</td><td><span class="pill pill-red">2</span></td><td>1</td><td class="hl-red">66.7%</td><td><span class="pill pill-red">주의</span></td></tr>
-          <tr><td>1_Seoul</td><td>Donghyuk Kim</td><td>12</td><td><span class="pill pill-orange">3</span></td><td>9</td><td>25.0%</td><td><span class="pill pill-orange">경계</span></td></tr>
-          <tr><td>1_Seoul</td><td>Heerock Jung</td><td>9</td><td><span class="pill pill-orange">2</span></td><td>7</td><td>22.2%</td><td><span class="pill pill-orange">경계</span></td></tr>
-          <tr><td>1_Seoul</td><td>Seungjae Yeo</td><td>3</td><td><span class="pill pill-orange">1</span></td><td>2</td><td>33.3%</td><td><span class="pill pill-orange">경계</span></td></tr>
-          <tr><td>1_Seoul</td><td>Jaeyong Lee</td><td>4</td><td>0</td><td>4</td><td class="hl-pine">0%</td><td><span class="pill pill-pine">달성</span></td></tr>
-          <tr><td>1_Seoul</td><td>Youngkyun Kim</td><td>4</td><td>0</td><td>4</td><td class="hl-pine">0%</td><td><span class="pill pill-pine">달성</span></td></tr>
-          <tr><td>1_Seoul</td><td>Youngju Seong</td><td>3</td><td>0</td><td>3</td><td class="hl-pine">0%</td><td><span class="pill pill-pine">달성</span></td></tr>
-          <tr><td>2_DJGJ</td><td>미지정(NaN)</td><td>12</td><td><span class="pill pill-orange">1</span></td><td>11</td><td>8.3%</td><td><span class="pill pill-pine">달성</span></td></tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Team</th><th>Owner</th><th>총건</th><th>Out of Target (Y)</th><th>On Target (N)</th><th>재발률</th><th>상태</th></tr></thead>
+      <tbody>
+        <tr><td>1_Seoul</td><td>Minseob Shim</td><td>23</td><td><span class="pill pill-red">9</span></td><td>14</td><td class="hl-red">39.1%</td><td><span class="pill pill-red">주의</span></td></tr>
+        <tr><td>2_DJGJ</td><td>Wonjin Song</td><td>6</td><td><span class="pill pill-red">4</span></td><td>2</td><td class="hl-red">66.7%</td><td><span class="pill pill-red">주의</span></td></tr>
+        <tr><td>1_Seoul</td><td>Sehun Kim</td><td>3</td><td><span class="pill pill-red">2</span></td><td>1</td><td class="hl-red">66.7%</td><td><span class="pill pill-red">주의</span></td></tr>
+        <tr><td>1_Seoul</td><td>Donghyuk Kim</td><td>12</td><td><span class="pill pill-orange">3</span></td><td>9</td><td>25.0%</td><td><span class="pill pill-orange">경계</span></td></tr>
+        <tr><td>1_Seoul</td><td>Heerock Jung</td><td>9</td><td><span class="pill pill-orange">2</span></td><td>7</td><td>22.2%</td><td><span class="pill pill-orange">경계</span></td></tr>
+        <tr><td>1_Seoul</td><td>Seungjae Yeo</td><td>3</td><td><span class="pill pill-orange">1</span></td><td>2</td><td>33.3%</td><td><span class="pill pill-orange">경계</span></td></tr>
+        <tr><td>1_Seoul</td><td>Jaeyong Lee</td><td>4</td><td>0</td><td>4</td><td class="hl-pine">0%</td><td><span class="pill pill-pine">달성</span></td></tr>
+        <tr><td>1_Seoul</td><td>Youngkyun Kim</td><td>4</td><td>0</td><td>4</td><td class="hl-pine">0%</td><td><span class="pill pill-pine">달성</span></td></tr>
+        <tr><td>1_Seoul</td><td>Youngju Seong</td><td>3</td><td>0</td><td>3</td><td class="hl-pine">0%</td><td><span class="pill pill-pine">달성</span></td></tr>
+        <tr><td>2_DJGJ</td><td>미지정(NaN)</td><td>12</td><td><span class="pill pill-orange">1</span></td><td>11</td><td>8.3%</td><td><span class="pill pill-pine">달성</span></td></tr>
+      </tbody>
+    </table></div>
     <div class="note">Minseob Shim(39.1%) · Wonjin Song(66.7%) 관할 거래처에서 재발률 집중 — 즉시 RCA 및 follow-up 필요</div>
   </div>
   <div class="card">
-    <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-6 9 6v11a1 1 0 01-1 1H4a1 1 0 01-1-1z"/></svg>Out of Target 거래처 현황</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Team</th><th>거래처</th><th>재발(Y)</th><th>총건</th><th>재발률</th><th>Owner</th></tr></thead>
-        <tbody>
-          <tr><td>1_Seoul</td><td>한림대학교 성심병원(평촌)</td><td><span class="pill pill-red">3</span></td><td>3</td><td class="hl-red">100%</td><td>Minseob Shim</td></tr>
-          <tr><td>2_DJGJ</td><td>충청북도 충주의료원</td><td><span class="pill pill-red">3</span></td><td>6</td><td class="hl-red">50.0%</td><td>Wonjin Song</td></tr>
-          <tr><td>1_Seoul</td><td>(의료)칠석의료재단(안산사랑의병원)</td><td><span class="pill pill-red">4</span></td><td>10</td><td class="hl-red">40.0%</td><td>Minseob Shim</td></tr>
-          <tr><td>1_Seoul</td><td>서안산노인전문병원</td><td><span class="pill pill-red">3</span></td><td>8</td><td class="hl-red">37.5%</td><td>Minseob Shim / Donghyuk Kim</td></tr>
-          <tr><td>2_DJGJ</td><td>전북대학교병원</td><td><span class="pill pill-orange">1</span></td><td>3</td><td>33.3%</td><td>미지정</td></tr>
-          <tr><td>1_Seoul</td><td>의료법인이젠의료재단(러스크)</td><td><span class="pill pill-orange">1</span></td><td>2</td><td>50.0%</td><td>Sehun Kim</td></tr>
-          <tr><td>1_Seoul</td><td>서울아산병원</td><td><span class="pill pill-orange">1</span></td><td>2</td><td>50.0%</td><td>Sehun Kim</td></tr>
-          <tr><td>1_Seoul</td><td>인천하이병원</td><td><span class="pill pill-orange">2</span></td><td>9</td><td>22.2%</td><td>Donghyuk Kim / Seungjae Yeo</td></tr>
-          <tr><td>1_Seoul</td><td>(의)대인의료재단(다니엘병원)</td><td><span class="pill pill-orange">1</span></td><td>4</td><td>25.0%</td><td>Minseob Shim</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-6 9 6v11H4z"/></svg>Out of Target 거래처 현황</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Team</th><th>거래처</th><th>재발(Y)</th><th>총건</th><th>재발률</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td>1_Seoul</td><td>한림대학교 성심병원(평촌)</td><td><span class="pill pill-red">3</span></td><td>3</td><td class="hl-red">100%</td><td>Minseob Shim</td></tr>
+        <tr><td>2_DJGJ</td><td>충청북도 충주의료원</td><td><span class="pill pill-red">3</span></td><td>6</td><td class="hl-red">50.0%</td><td>Wonjin Song</td></tr>
+        <tr><td>1_Seoul</td><td>(의료)칠석의료재단(안산사랑의병원)</td><td><span class="pill pill-red">4</span></td><td>10</td><td class="hl-red">40.0%</td><td>Minseob Shim</td></tr>
+        <tr><td>1_Seoul</td><td>서안산노인전문병원</td><td><span class="pill pill-red">3</span></td><td>8</td><td class="hl-red">37.5%</td><td>Minseob Shim / Donghyuk Kim</td></tr>
+        <tr><td>2_DJGJ</td><td>전북대학교병원</td><td><span class="pill pill-orange">1</span></td><td>3</td><td>33.3%</td><td>미지정</td></tr>
+        <tr><td>1_Seoul</td><td>의료법인이젠의료재단(러스크)</td><td><span class="pill pill-orange">1</span></td><td>2</td><td>50.0%</td><td>Sehun Kim</td></tr>
+        <tr><td>1_Seoul</td><td>서울아산병원</td><td><span class="pill pill-orange">1</span></td><td>2</td><td>50.0%</td><td>Sehun Kim</td></tr>
+        <tr><td>1_Seoul</td><td>인천하이병원</td><td><span class="pill pill-orange">2</span></td><td>9</td><td>22.2%</td><td>Donghyuk Kim / Seungjae Yeo</td></tr>
+        <tr><td>1_Seoul</td><td>(의)대인의료재단(다니엘병원)</td><td><span class="pill pill-orange">1</span></td><td>4</td><td>25.0%</td><td>Minseob Shim</td></tr>
+      </tbody>
+    </table></div>
   </div>
 </div>
 
-<!-- ========== TAB: TEAM ========== -->
-<div class="content section" id="tab-team">
+<!-- KO: TEAM -->
+<div class="content section" id="tab-ko-2">
   <div class="section-title"><span class="arrows">&gt;&gt;&gt;</span> 팀별 상세 분석</div>
   <div class="team-block">
-    <div class="team-head team-head-pine">1_Seoul <span style="opacity:0.7;font-weight:400;font-size:10px;margin-left:10px">Complaints 380건 · 거래처 62개 · 30DRR 64건</span></div>
+    <div class="team-head team-head-pine">1_Seoul<span style="opacity:0.7;font-weight:400;font-size:10px;margin-left:12px">Complaints 380건 · 거래처 62개 · 30DRR 64건</span></div>
     <div class="team-body">
       <div class="grid-2">
         <div><div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px">Product</div>
@@ -320,14 +300,12 @@
       </div>
       <div class="divider"></div>
       <div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px">주요 불량 유형</div>
-      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px">
-        <span class="tag">111 PC PUMP (66)</span><span class="tag">64 SAFE STATE (41)</span><span class="tag">422 T1 FLOW (35)</span><span class="tag">External Leak (27)</span><span class="tag">505 UF DEV (25)</span><span class="tag">469 Leakage C (21)</span><span class="tag">183 Battery (21)</span><span class="tag">Damaged (20)</span>
-      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px"><span class="tag">111 PC PUMP (66)</span><span class="tag">64 SAFE STATE (41)</span><span class="tag">422 T1 FLOW (35)</span><span class="tag">External Leak (27)</span><span class="tag">505 UF DEV (25)</span><span class="tag">469 Leakage C (21)</span><span class="tag">183 Battery (21)</span><span class="tag">Damaged (20)</span></div>
       <div class="alert alert-orange">30DRR 25.0% (16Y/64건) — Target(20%) 초과 · 집중관리: 한림대성심(100%), 칠석의료재단(40%), 서안산노인전문(37.5%)</div>
     </div>
   </div>
   <div class="team-block">
-    <div class="team-head team-head-euca">2_DJGJ <span style="opacity:0.7;font-weight:400;font-size:10px;margin-left:10px">Complaints 221건 · 거래처 45개 · 30DRR 18건</span></div>
+    <div class="team-head team-head-euca">2_DJGJ<span style="opacity:0.7;font-weight:400;font-size:10px;margin-left:12px">Complaints 221건 · 거래처 45개 · 30DRR 18건</span></div>
     <div class="team-body">
       <div class="grid-2">
         <div><div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px">Product</div>
@@ -343,14 +321,12 @@
       </div>
       <div class="divider"></div>
       <div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px">주요 불량 유형</div>
-      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px">
-        <span class="tag">111 PC PUMP (40)</span><span class="tag">422 T1 FLOW (21)</span><span class="tag">Damaged (19)</span><span class="tag">64 SAFE STATE (17)</span><span class="tag">469 Leakage C (14)</span><span class="tag">183 Battery (11)</span>
-      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px"><span class="tag">111 PC PUMP (40)</span><span class="tag">422 T1 FLOW (21)</span><span class="tag">Damaged (19)</span><span class="tag">64 SAFE STATE (17)</span><span class="tag">469 Leakage C (14)</span><span class="tag">183 Battery (11)</span></div>
       <div class="alert alert-orange">30DRR 27.8% (5Y/18건) — Target(20%) 및 Caution(25%) 모두 초과 · 충북충주의료원(50%), 전북대병원(33%)</div>
     </div>
   </div>
   <div class="team-block">
-    <div class="team-head team-head-plum">3_BSDG <span style="opacity:0.7;font-weight:400;font-size:10px;margin-left:10px">Complaints 603건 · 거래처 84개 · 30DRR 데이터 미포함</span></div>
+    <div class="team-head team-head-plum">3_BSDG<span style="opacity:0.7;font-weight:400;font-size:10px;margin-left:12px">Complaints 603건 · 거래처 84개 · 30DRR 데이터 미포함</span></div>
     <div class="team-body">
       <div class="grid-2">
         <div><div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px">Product</div>
@@ -366,16 +342,14 @@
       </div>
       <div class="divider"></div>
       <div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px">주요 불량 유형</div>
-      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px">
-        <span class="tag">111 PC PUMP (55)</span><span class="tag">422 T1 FLOW (37)</span><span class="tag">64 SAFE STATE (28)</span><span class="tag">665 INCORRECT CONC. (28)</span><span class="tag">External Leak (25)</span><span class="tag">Internal Leak (22)</span>
-      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px"><span class="tag">111 PC PUMP (55)</span><span class="tag">422 T1 FLOW (37)</span><span class="tag">64 SAFE STATE (28)</span><span class="tag">665 INCORRECT CONC. (28)</span><span class="tag">External Leak (25)</span><span class="tag">Internal Leak (22)</span></div>
       <div class="alert alert-sage">전체 최다 Complaints 팀(50.1%). 3_BSDG 30DRR 데이터 확보 필요 · 울산대병원(30건), 고신대복음병원(24건) 핵심 집중 거래처</div>
     </div>
   </div>
 </div>
 
-<!-- ========== TAB: REPORT FORMAT ========== -->
-<div class="content section" id="tab-report">
+<!-- KO: REPORT FORMAT -->
+<div class="content section" id="tab-ko-3">
   <div class="section-title"><span class="arrows">&gt;&gt;&gt;</span> 보고 형식 제안</div>
   <div class="grid-2">
     <div class="card">
@@ -403,89 +377,367 @@
     </div>
   </div>
   <div class="grid-3">
-    <div style="background:var(--plum-light);border-radius:3px;padding:14px;border-left:3px solid var(--plum)">
+    <div class="insight-box" style="background:var(--plum-light);border-left:3px solid var(--plum)">
       <div style="font-size:10px;font-weight:700;color:var(--plum);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">Complaints 주요 사유</div>
-      <div style="font-size:11px;color:var(--text-mid);line-height:1.9">
-        <span class="arrows" style="font-size:10px">&gt;</span> PC Pump 고장(161건) — 기계적 마모 · 교체 주기<br>
-        <span class="arrows" style="font-size:10px">&gt;</span> T1 Flow Meter(93건) — 소모품 교정 주기<br>
-        <span class="arrows" style="font-size:10px">&gt;</span> Safe State(86건) — 오작동 vs 진성 알람<br>
-        <span class="arrows" style="font-size:10px">&gt;</span> 누수 계열(~250건+) — 커넥터·호스 노후화
-      </div>
+      <div style="font-size:11px;color:var(--text-mid);line-height:1.9"><span class="arrows" style="font-size:10px">&gt;</span> PC Pump 고장(161건) — 기계적 마모 · 교체 주기<br><span class="arrows" style="font-size:10px">&gt;</span> T1 Flow Meter(93건) — 소모품 교정 주기<br><span class="arrows" style="font-size:10px">&gt;</span> Safe State(86건) — 오작동 vs 진성 알람<br><span class="arrows" style="font-size:10px">&gt;</span> 누수 계열(~250건+) — 커넥터·호스 노후화</div>
     </div>
-    <div style="background:var(--pine-light);border-radius:3px;padding:14px;border-left:3px solid var(--pine)">
+    <div class="insight-box" style="background:var(--pine-light);border-left:3px solid var(--pine)">
       <div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">30DRR 재발 주요 사유</div>
-      <div style="font-size:11px;color:var(--text-mid);line-height:1.9">
-        <span class="arrows" style="font-size:10px">&gt;</span> 수리 미완결 — 동일 증상 30일 내 재발<br>
-        <span class="arrows" style="font-size:10px">&gt;</span> 부품 재고 부족 — 임시 조치 후 재발<br>
-        <span class="arrows" style="font-size:10px">&gt;</span> 사용자 교육 미흡 — 반복 조작 오류<br>
-        <span class="arrows" style="font-size:10px">&gt;</span> 복합 장애 — 인접 부품 연쇄 불량
-      </div>
+      <div style="font-size:11px;color:var(--text-mid);line-height:1.9"><span class="arrows" style="font-size:10px">&gt;</span> 수리 미완결 — 동일 증상 30일 내 재발<br><span class="arrows" style="font-size:10px">&gt;</span> 부품 재고 부족 — 임시 조치 후 재발<br><span class="arrows" style="font-size:10px">&gt;</span> 사용자 교육 미흡 — 반복 조작 오류<br><span class="arrows" style="font-size:10px">&gt;</span> 복합 장애 — 인접 부품 연쇄 불량</div>
     </div>
-    <div style="background:var(--sage);border-radius:3px;padding:14px;border-left:3px solid var(--eucalyptus)">
+    <div class="insight-box" style="background:var(--sage);border-left:3px solid var(--eucalyptus)">
       <div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">추가 분석 권고</div>
-      <div style="font-size:11px;color:var(--text-mid);line-height:1.9">
-        <span class="arrows" style="font-size:10px">&gt;</span> 3_BSDG 30DRR 데이터 확보<br>
-        <span class="arrows" style="font-size:10px">&gt;</span> Q4 2025 대비 증감 분석<br>
-        <span class="arrows" style="font-size:10px">&gt;</span> Asset Serial 반복 불량 추적<br>
-        <span class="arrows" style="font-size:10px">&gt;</span> Complaint → 30DRR 연계 분석
+      <div style="font-size:11px;color:var(--text-mid);line-height:1.9"><span class="arrows" style="font-size:10px">&gt;</span> 3_BSDG 30DRR 데이터 확보<br><span class="arrows" style="font-size:10px">&gt;</span> Q4 2025 대비 증감 분석<br><span class="arrows" style="font-size:10px">&gt;</span> Asset Serial 반복 불량 추적<br><span class="arrows" style="font-size:10px">&gt;</span> Complaint → 30DRR 연계 분석</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== EN SECTIONS ===================== -->
+
+<!-- EN: COMPLAINTS -->
+<div class="content section" id="tab-en-0">
+  <div class="section-title"><span class="arrows">&gt;&gt;&gt;</span> Complaints Overview</div>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">Total Complaints</div><div class="kpi-value">1,204</div><div class="kpi-sub">Q1 2026 Total</div></div>
+    <div class="kpi-card pine"><div class="kpi-label">1_Seoul</div><div class="kpi-value">380</div><div class="kpi-sub">31.6%</div></div>
+    <div class="kpi-card eucalyptus"><div class="kpi-label">2_DJGJ</div><div class="kpi-value">221</div><div class="kpi-sub">18.4%</div></div>
+    <div class="kpi-card"><div class="kpi-label">3_BSDG</div><div class="kpi-value">603</div><div class="kpi-sub">50.1%</div></div>
+    <div class="kpi-card sage"><div class="kpi-label">Total Accounts</div><div class="kpi-value" style="color:#105742">191</div><div class="kpi-sub">Unique Accounts</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="7" height="18"/><rect x="14" y="8" width="7" height="13"/></svg>Complaints by Team</div>
+      <div class="chart-wrap"><canvas id="en-teamBar"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 12L12 3"/><path d="M12 12L19 16"/></svg>WO/SR Area Breakdown</div>
+      <div class="chart-wrap"><canvas id="en-woArea"></canvas></div>
+      <div class="note">Repair 94.4% (1,136 cases) vs Technical Assistance 5.6% (68 cases) — Repair-driven structure</div>
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l4-4 4 4 4-4 4 4"/><path d="M3 15l4-4 4 4 4-4 4 4"/></svg>Product Family</div>
+      <div class="chart-wrap-sm"><canvas id="en-product"></canvas></div>
+      <div class="note">Artis-Evosys 98.3% (1,183 cases) · PrisMax 1.7% (21 cases)</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>Monthly CMS Transfer Volume</div>
+      <div class="chart-wrap-sm"><canvas id="en-monthly"></canvas></div>
+      <div class="note">January: 963 cases (80%) — concentrated front-load at Q1 start</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s-8-5-8-12a8 8 0 0116 0c0 7-8 12-8 12z"/><circle cx="12" cy="10" r="2"/></svg>Top 15 Failure Types (by ARPC Code)</div>
+    <div id="en-arpc-bars"></div>
+    <div class="note">💡 PC Pump Failure (code 111, 161 cases) ranks #1. Leak-related codes (External/Internal Leak, 469·539·498·506) combined ~250+ cases — largest single category.</div>
+  </div>
+  <div class="card">
+    <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-6 9 6v11a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><path d="M9 22V12h6v10"/></svg>Top 5 Accounts by Team (by Complaint Volume)</div>
+    <div class="grid-3" style="margin-bottom:0">
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">1_Seoul — 62 Accounts</div>
+        <table><thead><tr><th>Account</th><th>Count</th></tr></thead><tbody>
+          <tr><td>Hallym Univ. Sacred Heart (Pyeongchon)</td><td><span class="pill pill-red">34</span></td></tr>
+          <tr><td>Hallym Univ. Dongtan Sacred Heart</td><td><span class="pill pill-orange">15</span></td></tr>
+          <tr><td>Cheongcheon Medical Foundation</td><td><span class="pill pill-orange">14</span></td></tr>
+          <tr><td>Uijeongbu Eulji Univ. Hospital</td><td><span class="pill pill-orange">14</span></td></tr>
+          <tr><td>Gangneung Asan Hospital</td><td><span class="pill pill-orange">14</span></td></tr>
+        </tbody></table>
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--eucalyptus);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">2_DJGJ — 45 Accounts</div>
+        <table><thead><tr><th>Account</th><th>Count</th></tr></thead><tbody>
+          <tr><td>Soonchunhyang Univ. Cheonan Hospital</td><td><span class="pill pill-red">13</span></td></tr>
+          <tr><td>Wonkwang Univ. Hospital</td><td><span class="pill pill-red">13</span></td></tr>
+          <tr><td>HappyView Hospital</td><td><span class="pill pill-orange">11</span></td></tr>
+          <tr><td>Chungcheongbuk-do Cheongju Medical Center</td><td><span class="pill pill-orange">9</span></td></tr>
+          <tr><td>Mokpo Korea Hospital</td><td><span class="pill pill-orange">9</span></td></tr>
+        </tbody></table>
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--plum);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">3_BSDG — 84 Accounts</div>
+        <table><thead><tr><th>Account</th><th>Count</th></tr></thead><tbody>
+          <tr><td>Ulsan Univ. Hospital</td><td><span class="pill pill-red">30</span></td></tr>
+          <tr><td>Kosin Univ. Gospel Hospital</td><td><span class="pill pill-red">24</span></td></tr>
+          <tr><td>Joeun Samsun Hospital</td><td><span class="pill pill-red">22</span></td></tr>
+          <tr><td>Ishin Internal Medicine Clinic</td><td><span class="pill pill-orange">19</span></td></tr>
+          <tr><td>Samsung Changwon Hospital (SKK Univ.)</td><td><span class="pill pill-orange">18</span></td></tr>
+        </tbody></table>
       </div>
     </div>
   </div>
 </div>
 
+<!-- EN: 30DRR -->
+<div class="content section" id="tab-en-1">
+  <div class="alert alert-plum">
+    <strong>30DRR Criteria</strong> — Target Met ≤ 20% &nbsp;|&nbsp; Caution ≤ 25%<br>
+    Rate of WO/SR re-submissions within 30 days on the same asset. Y = Recurrence · N = No Recurrence<br>
+    <span class="hl-red">1_Seoul: 25.0% / 2_DJGJ: 27.8%</span> → Both teams exceed the 20% Target
+  </div>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">Total 30DRR Records</div><div class="kpi-value">82</div><div class="kpi-sub">Jan–Mar 2026</div></div>
+    <div class="kpi-card pine"><div class="kpi-label">1_Seoul</div><div class="kpi-value">64</div><div class="kpi-sub">13 Accounts</div></div>
+    <div class="kpi-card eucalyptus"><div class="kpi-label">2_DJGJ</div><div class="kpi-value">18</div><div class="kpi-sub">4 Accounts</div></div>
+    <div class="kpi-card red"><div class="kpi-label">Out of Target (Y)</div><div class="kpi-value">21</div><div class="kpi-sub">25.6% Recurrence</div></div>
+    <div class="kpi-card sage"><div class="kpi-label">On Target (N)</div><div class="kpi-value" style="color:#105742">61</div><div class="kpi-sub">74.4% No Recurrence</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>30DRR % by Team vs Target</div>
+      <div class="chart-wrap"><canvas id="en-drrKpi"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 12L12 3"/><path d="M12 12L19 16"/></svg>Recurrence (Y) vs Non-Recurrence (N)</div>
+      <div class="chart-wrap"><canvas id="en-drrYN"></canvas></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4"/><path d="M16 11l2 2 4-4"/></svg>30DRR by WOLI/ACT Owner</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Team</th><th>Owner</th><th>Total</th><th>Out of Target (Y)</th><th>On Target (N)</th><th>Rate</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>1_Seoul</td><td>Minseob Shim</td><td>23</td><td><span class="pill pill-red">9</span></td><td>14</td><td class="hl-red">39.1%</td><td><span class="pill pill-red">Critical</span></td></tr>
+        <tr><td>2_DJGJ</td><td>Wonjin Song</td><td>6</td><td><span class="pill pill-red">4</span></td><td>2</td><td class="hl-red">66.7%</td><td><span class="pill pill-red">Critical</span></td></tr>
+        <tr><td>1_Seoul</td><td>Sehun Kim</td><td>3</td><td><span class="pill pill-red">2</span></td><td>1</td><td class="hl-red">66.7%</td><td><span class="pill pill-red">Critical</span></td></tr>
+        <tr><td>1_Seoul</td><td>Donghyuk Kim</td><td>12</td><td><span class="pill pill-orange">3</span></td><td>9</td><td>25.0%</td><td><span class="pill pill-orange">Caution</span></td></tr>
+        <tr><td>1_Seoul</td><td>Heerock Jung</td><td>9</td><td><span class="pill pill-orange">2</span></td><td>7</td><td>22.2%</td><td><span class="pill pill-orange">Caution</span></td></tr>
+        <tr><td>1_Seoul</td><td>Seungjae Yeo</td><td>3</td><td><span class="pill pill-orange">1</span></td><td>2</td><td>33.3%</td><td><span class="pill pill-orange">Caution</span></td></tr>
+        <tr><td>1_Seoul</td><td>Jaeyong Lee</td><td>4</td><td>0</td><td>4</td><td class="hl-pine">0%</td><td><span class="pill pill-pine">On Target</span></td></tr>
+        <tr><td>1_Seoul</td><td>Youngkyun Kim</td><td>4</td><td>0</td><td>4</td><td class="hl-pine">0%</td><td><span class="pill pill-pine">On Target</span></td></tr>
+        <tr><td>1_Seoul</td><td>Youngju Seong</td><td>3</td><td>0</td><td>3</td><td class="hl-pine">0%</td><td><span class="pill pill-pine">On Target</span></td></tr>
+        <tr><td>2_DJGJ</td><td>Unassigned</td><td>12</td><td><span class="pill pill-orange">1</span></td><td>11</td><td>8.3%</td><td><span class="pill pill-pine">On Target</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">Minseob Shim (39.1%) and Wonjin Song (66.7%) show critically high recurrence — immediate RCA and follow-up required</div>
+  </div>
+  <div class="card">
+    <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-6 9 6v11H4z"/></svg>Out of Target Accounts</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Team</th><th>Account</th><th>Y (Recur)</th><th>Total</th><th>Rate</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td>1_Seoul</td><td>Hallym Sacred Heart (Pyeongchon)</td><td><span class="pill pill-red">3</span></td><td>3</td><td class="hl-red">100%</td><td>Minseob Shim</td></tr>
+        <tr><td>2_DJGJ</td><td>Chungcheongbuk-do Chungju Medical Center</td><td><span class="pill pill-red">3</span></td><td>6</td><td class="hl-red">50.0%</td><td>Wonjin Song</td></tr>
+        <tr><td>1_Seoul</td><td>Chilseok Medical Foundation (Ansan)</td><td><span class="pill pill-red">4</span></td><td>10</td><td class="hl-red">40.0%</td><td>Minseob Shim</td></tr>
+        <tr><td>1_Seoul</td><td>Seo-Ansan Elderly Care Hospital</td><td><span class="pill pill-red">3</span></td><td>8</td><td class="hl-red">37.5%</td><td>Minseob Shim / Donghyuk Kim</td></tr>
+        <tr><td>2_DJGJ</td><td>Chonbuk National Univ. Hospital</td><td><span class="pill pill-orange">1</span></td><td>3</td><td>33.3%</td><td>Unassigned</td></tr>
+        <tr><td>1_Seoul</td><td>Rusk Hospital (Ijen Medical Foundation)</td><td><span class="pill pill-orange">1</span></td><td>2</td><td>50.0%</td><td>Sehun Kim</td></tr>
+        <tr><td>1_Seoul</td><td>Seoul Asan Hospital</td><td><span class="pill pill-orange">1</span></td><td>2</td><td>50.0%</td><td>Sehun Kim</td></tr>
+        <tr><td>1_Seoul</td><td>Incheon Hi Hospital</td><td><span class="pill pill-orange">2</span></td><td>9</td><td>22.2%</td><td>Donghyuk Kim / Seungjae Yeo</td></tr>
+        <tr><td>1_Seoul</td><td>Daniel Hospital (Daein Medical Foundation)</td><td><span class="pill pill-orange">1</span></td><td>4</td><td>25.0%</td><td>Minseob Shim</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- EN: TEAM -->
+<div class="content section" id="tab-en-2">
+  <div class="section-title"><span class="arrows">&gt;&gt;&gt;</span> Team Detail Analysis</div>
+  <div class="team-block">
+    <div class="team-head team-head-pine">1_Seoul<span style="opacity:0.7;font-weight:400;font-size:10px;margin-left:12px">Complaints: 380 · Accounts: 62 · 30DRR: 64 records</span></div>
+    <div class="team-body">
+      <div class="grid-2">
+        <div><div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px">Product</div>
+          <table><thead><tr><th>Product</th><th>Count</th><th>Share</th></tr></thead><tbody>
+            <tr><td>Artis-Evosys Machines</td><td>374</td><td><span class="pill pill-pine">98.4%</span></td></tr>
+            <tr><td>PrisMax</td><td>6</td><td><span class="pill pill-gray">1.6%</span></td></tr>
+          </tbody></table></div>
+        <div><div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px">WO/SR Area</div>
+          <table><thead><tr><th>Area</th><th>Count</th><th>Share</th></tr></thead><tbody>
+            <tr><td>Repair</td><td>358</td><td><span class="pill pill-pine">94.2%</span></td></tr>
+            <tr><td>Technical Assistance</td><td>22</td><td><span class="pill pill-gray">5.8%</span></td></tr>
+          </tbody></table></div>
+      </div>
+      <div class="divider"></div>
+      <div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px">Top Failure Types</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px"><span class="tag">111 PC PUMP (66)</span><span class="tag">64 SAFE STATE (41)</span><span class="tag">422 T1 FLOW (35)</span><span class="tag">External Leak (27)</span><span class="tag">505 UF DEV (25)</span><span class="tag">469 Leakage C (21)</span><span class="tag">183 Battery (21)</span><span class="tag">Damaged (20)</span></div>
+      <div class="alert alert-orange">30DRR: 25.0% (16Y/64) — Exceeds Target (20%) · Priority: Hallym Sacred Heart (100%), Chilseok Foundation (40%), Seo-Ansan Elderly (37.5%)</div>
+    </div>
+  </div>
+  <div class="team-block">
+    <div class="team-head team-head-euca">2_DJGJ<span style="opacity:0.7;font-weight:400;font-size:10px;margin-left:12px">Complaints: 221 · Accounts: 45 · 30DRR: 18 records</span></div>
+    <div class="team-body">
+      <div class="grid-2">
+        <div><div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px">Product</div>
+          <table><thead><tr><th>Product</th><th>Count</th><th>Share</th></tr></thead><tbody>
+            <tr><td>Artis-Evosys Machines</td><td>214</td><td><span class="pill pill-pine">96.8%</span></td></tr>
+            <tr><td>PrisMax</td><td>7</td><td><span class="pill pill-gray">3.2%</span></td></tr>
+          </tbody></table></div>
+        <div><div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px">WO/SR Area</div>
+          <table><thead><tr><th>Area</th><th>Count</th><th>Share</th></tr></thead><tbody>
+            <tr><td>Repair</td><td>206</td><td><span class="pill pill-pine">93.2%</span></td></tr>
+            <tr><td>Technical Assistance</td><td>15</td><td><span class="pill pill-gray">6.8%</span></td></tr>
+          </tbody></table></div>
+      </div>
+      <div class="divider"></div>
+      <div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px">Top Failure Types</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px"><span class="tag">111 PC PUMP (40)</span><span class="tag">422 T1 FLOW (21)</span><span class="tag">Damaged (19)</span><span class="tag">64 SAFE STATE (17)</span><span class="tag">469 Leakage C (14)</span><span class="tag">183 Battery (11)</span></div>
+      <div class="alert alert-orange">30DRR: 27.8% (5Y/18) — Exceeds both Target (20%) and Caution (25%) · Priority: Chungju Medical Center (50%), Chonbuk Univ. Hospital (33%)</div>
+    </div>
+  </div>
+  <div class="team-block">
+    <div class="team-head team-head-plum">3_BSDG<span style="opacity:0.7;font-weight:400;font-size:10px;margin-left:12px">Complaints: 603 · Accounts: 84 · 30DRR data not included</span></div>
+    <div class="team-body">
+      <div class="grid-2">
+        <div><div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px">Product</div>
+          <table><thead><tr><th>Product</th><th>Count</th><th>Share</th></tr></thead><tbody>
+            <tr><td>Artis-Evosys Machines</td><td>595</td><td><span class="pill pill-pine">98.7%</span></td></tr>
+            <tr><td>PrisMax</td><td>8</td><td><span class="pill pill-gray">1.3%</span></td></tr>
+          </tbody></table></div>
+        <div><div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px">WO/SR Area</div>
+          <table><thead><tr><th>Area</th><th>Count</th><th>Share</th></tr></thead><tbody>
+            <tr><td>Repair</td><td>572</td><td><span class="pill pill-pine">94.9%</span></td></tr>
+            <tr><td>Technical Assistance</td><td>31</td><td><span class="pill pill-gray">5.1%</span></td></tr>
+          </tbody></table></div>
+      </div>
+      <div class="divider"></div>
+      <div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px">Top Failure Types</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px"><span class="tag">111 PC PUMP (55)</span><span class="tag">422 T1 FLOW (37)</span><span class="tag">64 SAFE STATE (28)</span><span class="tag">665 INCORRECT CONC. (28)</span><span class="tag">External Leak (25)</span><span class="tag">Internal Leak (22)</span></div>
+      <div class="alert alert-sage">Highest complaint volume (50.1% of total). 30DRR data pending — Ulsan Univ. Hospital (30), Kosin Univ. Gospel Hospital (24) are key focus accounts.</div>
+    </div>
+  </div>
+</div>
+
+<!-- EN: REPORT FORMAT -->
+<div class="content section" id="tab-en-3">
+  <div class="section-title"><span class="arrows">&gt;&gt;&gt;</span> Reporting Format Proposal</div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>KR Complaints Report Structure</div>
+      <div class="report-row"><div class="report-num">01</div><div><div class="report-label">Executive Summary</div><div class="report-desc">Total volume · team breakdown · QoQ change</div></div></div>
+      <div class="report-row"><div class="report-num">02</div><div><div class="report-label">Team Volume</div><div class="report-desc">Cases and unique accounts per team</div></div></div>
+      <div class="report-row"><div class="report-num">03</div><div><div class="report-label">Product Classification</div><div class="report-desc">Artis-Evosys vs PrisMax volume and share</div></div></div>
+      <div class="report-row"><div class="report-num">04</div><div><div class="report-label">WO/SR Area</div><div class="report-desc">Repair vs Technical Assistance breakdown</div></div></div>
+      <div class="report-row"><div class="report-num">05</div><div><div class="report-label">Top Failure Types</div><div class="report-desc">ARPC code ranking (PC Pump · T1 Meter · Leaks)</div></div></div>
+      <div class="report-row"><div class="report-num">06</div><div><div class="report-label">Customer Problem Analysis</div><div class="report-desc">Keyword frequency from problem descriptions</div></div></div>
+      <div class="report-row"><div class="report-num">07</div><div><div class="report-label">Key Accounts</div><div class="report-desc">Top 5 high-frequency accounts per team</div></div></div>
+      <div class="report-row"><div class="report-num">08</div><div><div class="report-label">Root Cause Analysis</div><div class="report-desc">Root cause and action status by failure type</div></div></div>
+      <div class="report-row" style="border:none"><div class="report-num">09</div><div><div class="report-label">Action Items</div><div class="report-desc">Focus management plan · PM reinforcement targets</div></div></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#105742" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>30DRR Report Structure</div>
+      <div class="report-row"><div class="report-num">01</div><div><div class="report-label">KPI Summary</div><div class="report-desc">30DRR % per team vs Target (20%) / Caution (25%)</div></div></div>
+      <div class="report-row"><div class="report-num">02</div><div><div class="report-label">Team Recurrence Status</div><div class="report-desc">Seoul 25% / DJGJ 27.8% vs 20% target</div></div></div>
+      <div class="report-row"><div class="report-num">03</div><div><div class="report-label">By Product</div><div class="report-desc">Phoenix-Innova common issue investigation</div></div></div>
+      <div class="report-row"><div class="report-num">04</div><div><div class="report-label">Owner-level Analysis</div><div class="report-desc">WOLI/ACT Owner recurrence rate ranking</div></div></div>
+      <div class="report-row"><div class="report-num">05</div><div><div class="report-label">Account Detail</div><div class="report-desc">Out of Target accounts and recurrence counts</div></div></div>
+      <div class="report-row"><div class="report-num">06</div><div><div class="report-label">Monthly Trend</div><div class="report-desc">Recurrence trend: January → February → March</div></div></div>
+      <div class="report-row"><div class="report-num">07</div><div><div class="report-label">Root Cause Analysis</div><div class="report-desc">Incomplete repair · parts shortage · user training</div></div></div>
+      <div class="report-row" style="border:none"><div class="report-num">08</div><div><div class="report-label">Improvement Actions</div><div class="report-desc">Per-owner follow-up plan · RCA account designation</div></div></div>
+    </div>
+  </div>
+  <div class="grid-3">
+    <div class="insight-box" style="background:var(--plum-light);border-left:3px solid var(--plum)">
+      <div style="font-size:10px;font-weight:700;color:var(--plum);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">Complaints Root Causes</div>
+      <div style="font-size:11px;color:var(--text-mid);line-height:1.9"><span class="arrows" style="font-size:10px">&gt;</span> PC Pump failure (161) — mechanical wear, replacement cycle<br><span class="arrows" style="font-size:10px">&gt;</span> T1 Flow Meter (93) — consumable calibration interval<br><span class="arrows" style="font-size:10px">&gt;</span> Safe State (86) — false vs. genuine alarm classification<br><span class="arrows" style="font-size:10px">&gt;</span> Leak-related (~250+) — connector/hose aging</div>
+    </div>
+    <div class="insight-box" style="background:var(--pine-light);border-left:3px solid var(--pine)">
+      <div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">30DRR Recurrence Causes</div>
+      <div style="font-size:11px;color:var(--text-mid);line-height:1.9"><span class="arrows" style="font-size:10px">&gt;</span> Incomplete repair — same symptom within 30 days<br><span class="arrows" style="font-size:10px">&gt;</span> Parts shortage — temporary fix, awaiting stock<br><span class="arrows" style="font-size:10px">&gt;</span> Insufficient user training — repeated operator error<br><span class="arrows" style="font-size:10px">&gt;</span> Complex failure — cascade component failure</div>
+    </div>
+    <div class="insight-box" style="background:var(--sage);border-left:3px solid var(--eucalyptus)">
+      <div style="font-size:10px;font-weight:700;color:var(--pine);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">Further Analysis Recommended</div>
+      <div style="font-size:11px;color:var(--text-mid);line-height:1.9"><span class="arrows" style="font-size:10px">&gt;</span> Obtain 3_BSDG 30DRR data for full Q1 report<br><span class="arrows" style="font-size:10px">&gt;</span> QoQ comparison with Q4 2025<br><span class="arrows" style="font-size:10px">&gt;</span> Asset serial-level repeat failure tracking<br><span class="arrows" style="font-size:10px">&gt;</span> Complaint → 30DRR linkage analysis</div>
+    </div>
+  </div>
+</div>
+
 <script>
+// ── Config ─────────────────────────────────────────────────────
+const TABS = {
+  ko: { ids: ['ko-0','ko-1','ko-2','ko-3'], labels: ['Complaints 분석','30DRR 분석','팀별 상세','보고 형식 제안'] },
+  en: { ids: ['en-0','en-1','en-2','en-3'], labels: ['Complaints','30DRR','Team Detail','Report Format'] }
+};
 let currentLang = 'ko';
-const koTabs = ['complaints','drr','team','report'];
-const koLabels = ['Complaints 분석','30DRR 분석','팀별 상세','보고 형식 제안'];
+let currentIdx  = 0;
 
 function setLang(lang) {
   currentLang = lang;
+  currentIdx  = 0;
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
+  renderNav();
+  showTab(0);
 }
 
-function switchTab(tab) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  const el = document.getElementById('tab-' + tab);
-  if (el) el.classList.add('active');
+function renderNav() {
+  const cfg = TABS[currentLang];
   document.querySelectorAll('.nav-tab').forEach((t, i) => {
-    t.classList.toggle('active', koTabs[i] === tab);
+    t.textContent = cfg.labels[i];
+    t.onclick = () => switchTab(i);
   });
 }
 
+function switchTab(idx) {
+  currentIdx = idx;
+  document.querySelectorAll('.nav-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
+  showTab(idx);
+}
+
+function showTab(idx) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  const cfg = TABS[currentLang];
+  const el = document.getElementById('tab-' + cfg.ids[idx]);
+  if (el) el.classList.add('active');
+}
+
+// ── Charts ─────────────────────────────────────────────────────
 const PLUM='#72256B', PINE='#105742', EUCA='#6CA07A', SAGE='#CDDFD7', RED='#c0392b', ORG='#d97706';
 
 function barChart(id, labels, data, colors) {
   const ctx = document.getElementById(id); if (!ctx) return;
   new Chart(ctx, { type:'bar', data:{ labels, datasets:[{ data, backgroundColor:colors, borderRadius:3, borderSkipped:false }] },
-    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ display:false } }, scales:{ y:{ beginAtZero:true, grid:{ color:SAGE } }, x:{ grid:{ display:false } } } } });
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ display:false } },
+      scales:{ y:{ beginAtZero:true, grid:{ color:SAGE } }, x:{ grid:{ display:false } } } } });
 }
 function donutChart(id, labels, data, colors) {
   const ctx = document.getElementById(id); if (!ctx) return;
   new Chart(ctx, { type:'doughnut', data:{ labels, datasets:[{ data, backgroundColor:colors, borderWidth:2, borderColor:'#FFFAEB' }] },
-    options:{ responsive:true, maintainAspectRatio:false, cutout:'65%', plugins:{ legend:{ position:'bottom', labels:{ font:{ size:10 }, padding:10 } } } } });
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'65%',
+      plugins:{ legend:{ position:'bottom', labels:{ font:{ size:10 }, padding:10 } } } } });
 }
 
-barChart('teamBarChart', ['1_Seoul','2_DJGJ','3_BSDG'], [380,221,603], [PINE,EUCA,PLUM]);
-donutChart('woAreaChart', ['Repair','Technical Assistance'], [1136,68], [PINE,SAGE]);
-donutChart('productChart', ['Artis-Evosys','PrisMax'], [1183,21], [PLUM,SAGE]);
-barChart('monthlyChart', ['1월 (Jan)','2월 (Feb)'], [963,241], [PINE,EUCA]);
-barChart('drrKpiChart', ['1_Seoul','2_DJGJ','Target','Caution'], [25,27.8,20,25], [RED,ORG,PINE,EUCA]);
-donutChart('drrYNChart', ['On Target (N)','Out of Target (Y)'], [61,21], [PINE,RED]);
+// KO charts
+barChart('ko-teamBar',  ['1_Seoul','2_DJGJ','3_BSDG'], [380,221,603], [PINE,EUCA,PLUM]);
+donutChart('ko-woArea', ['Repair','Technical Assistance'], [1136,68], [PINE,SAGE]);
+donutChart('ko-product',['Artis-Evosys','PrisMax'], [1183,21], [PLUM,SAGE]);
+barChart('ko-monthly',  ['1월 (Jan)','2월 (Feb)'], [963,241], [PINE,EUCA]);
+barChart('ko-drrKpi',   ['1_Seoul','2_DJGJ','Target','Caution'], [25,27.8,20,25], [RED,ORG,PINE,EUCA]);
+donutChart('ko-drrYN',  ['On Target (N)','Out of Target (Y)'], [61,21], [PINE,RED]);
 
+// EN charts
+barChart('en-teamBar',  ['1_Seoul','2_DJGJ','3_BSDG'], [380,221,603], [PINE,EUCA,PLUM]);
+donutChart('en-woArea', ['Repair','Technical Assistance'], [1136,68], [PINE,SAGE]);
+donutChart('en-product',['Artis-Evosys','PrisMax'], [1183,21], [PLUM,SAGE]);
+barChart('en-monthly',  ['January','February'], [963,241], [PINE,EUCA]);
+barChart('en-drrKpi',   ['1_Seoul','2_DJGJ','Target','Caution'], [25,27.8,20,25], [RED,ORG,PINE,EUCA]);
+donutChart('en-drrYN',  ['On Target (N)','Out of Target (Y)'], [61,21], [PINE,RED]);
+
+// ── ARPC Progress Bars (both KO and EN) ────────────────────────
 const arpcData = [
-  {label:'111 PC PUMP FAILURE',val:161},{label:'422 T1 TEST FLOW METERS',val:93},{label:'64 SAFE STATE ACTIVATED',val:86},
-  {label:'EXTERNAL LEAK (FLUID)',val:64},{label:'DAMAGED/CRACKED/BROKEN',val:56},{label:'469 LEAKAGES TEST (C)',val:54},
-  {label:'505 UF DEVIATION',val:50},{label:'665 INCORRECT CONC.',val:48},{label:'183 BACKUP BATTERY',val:45},
-  {label:'539 WATER LEAKAGE',val:34},{label:'506 FLOWMETER ALIGN FAIL',val:34},{label:'INTERNAL LEAK (FLUID)',val:33},
-  {label:'UNEXPECTED NOISE',val:30},{label:'498 LEAKAGES TEST (E)',val:20},{label:'500 LEAKAGES TEST (G)',val:20},
+  {label:'111 PC PUMP FAILURE',val:161},{label:'422 T1 TEST FLOW METERS',val:93},
+  {label:'64 SAFE STATE ACTIVATED',val:86},{label:'EXTERNAL LEAK (FLUID)',val:64},
+  {label:'DAMAGED/CRACKED/BROKEN',val:56},{label:'469 LEAKAGES TEST (C)',val:54},
+  {label:'505 UF DEVIATION',val:50},{label:'665 INCORRECT CONC.',val:48},
+  {label:'183 BACKUP BATTERY',val:45},{label:'539 WATER LEAKAGE',val:34},
+  {label:'506 FLOWMETER ALIGN FAIL',val:34},{label:'INTERNAL LEAK (FLUID)',val:33},
+  {label:'UNEXPECTED NOISE',val:30},{label:'498 LEAKAGES TEST (E)',val:20},
+  {label:'500 LEAKAGES TEST (G)',val:20},
 ];
 const barColors = [PLUM,PLUM,PLUM,PINE,PINE,EUCA,EUCA,'#9db8ae','#9db8ae','#7a9e90','#7a9e90','#6b8e82','#6b8e82','#bbb','#bbb'];
-const container = document.getElementById('arpc-bars');
-arpcData.forEach((d,i) => {
-  const row = document.createElement('div'); row.className='progress-row';
-  row.innerHTML=`<div class="progress-label" title="${d.label}">${d.label}</div><div class="progress-bar-wrap"><div class="progress-bar" style="width:${(d.val/161*100).toFixed(0)}%;background:${barColors[i]}"></div></div><div class="progress-val">${d.val}</div>`;
-  container.appendChild(row);
+
+['ko-arpc-bars','en-arpc-bars'].forEach(cid => {
+  const container = document.getElementById(cid); if (!container) return;
+  arpcData.forEach((d,i) => {
+    const row = document.createElement('div'); row.className = 'progress-row';
+    row.innerHTML = `<div class="progress-label" title="${d.label}">${d.label}</div><div class="progress-bar-wrap"><div class="progress-bar" style="width:${(d.val/161*100).toFixed(0)}%;background:${barColors[i]}"></div></div><div class="progress-val">${d.val}</div>`;
+    container.appendChild(row);
+  });
 });
+
+// ── Init ───────────────────────────────────────────────────────
+renderNav();
+showTab(0);
 </script>
 </body>
 </html>
